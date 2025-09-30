@@ -3,7 +3,7 @@ import './WelcomeSection.css';
 
 const WelcomeSection = () => {
   return (
-    <section className="welcome-section">
+    <section id="welcome-section" className="welcome-section">
       <div className="welcome-container">
         <div className="welcome-text-content">
           <h2 className="welcome-title">Welcome to Reign Jiu Jitsu – Katy, TX</h2>

@@ -2,7 +2,8 @@
 
 .programs-section {
   padding: 80px 20px;
-  background-color: #F9F9F9; /* Light gray background */
+  background-color: #2c2c2c; /* Dark gray background */
+  color: #ffffff; /* Light text color */
 }
 
 .programs-grid {
@@ -14,9 +15,9 @@
 }
 
 .program-card {
-  background: var(--background-primary);
+  background: #3a3a3a; /* Slightly lighter gray for the card */
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
   overflow: hidden;
   text-align: left;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -43,13 +44,13 @@
 .program-title {
   font-size: 22px;
   font-family: var(--font-heading-secondary);
-  color: var(--text-charcoal);
+  color: #ffffff;
   margin-top: 0;
   margin-bottom: 10px;
 }
 
 .program-description {
   font-size: 16px;
-  color: var(--text-dark-gray);
+  color: #dddddd;
   line-height: 1.6;
 }
