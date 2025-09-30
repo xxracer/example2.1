@@ -1,55 +1,66 @@
 import React from 'react';
 import './ProgramPage.css';
+import FAQ from '../components/FAQ';
 
 const PrivateLessons = () => {
+  const pageFaqs = [
+    {
+      question: "Can I share a Private Lesson with a friend?",
+      answer: "Yes, private lessons offer the flexibility to work with the coach on a one-on-one basis or in a small group environment, allowing you to train with a partner or small group."
+    },
+    {
+      question: "Are Private Lessons suitable for complete beginners?",
+      answer: "Absolutely. Beginners often find that private lessons help them build a solid foundation and confidence faster, making their subsequent transition into group classes more effective and enjoyable."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": pageFaqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
   return (
     <div className="program-page">
-      <section className="program-hero" style={{ backgroundImage: "url('https://placehold.co/1920x1080?text=Private+Lessons')" }}>
+      <script type="application/ld+json">
+        {JSON.stringify(faqSchema)}
+      </script>
+      <section className="program-hero" style={{ backgroundImage: "url('https://placehold.co/1920x1080?text=One-on-one+Lesson')" }}>
         <h1 className="program-hero-title">Private Lessons</h1>
       </section>
 
       <section className="program-intro">
         <p>
-          Private lessons give you the opportunity to work with the Coach on a one-on-one or in a small group environment, getting you results quicker than group classes.
+          Accelerate your progress with Private BJJ lessons. Work directly with our instructors to focus on your goals, from self-defense to competition preparation. Many students find that private Jiu Jitsu classes near me give them the boost they need to succeed.
         </p>
       </section>
 
       <section className="program-details-section">
         <div className="program-details-text">
-          <h2>Accelerated Learning</h2>
+          <h2>Focus on Your Goals</h2>
           <p>
-            Our one-on-one approach is perfect for perfecting techniques, improving fitness, or mastering new moves. At just $170 per session, you’re investing in exceptional quality and accelerated growth.
+            Private lessons are the fastest way to improve. Get personalized feedback and instruction tailored to your specific needs.
           </p>
           <ul>
-            <li>- Personalized, one-on-one instruction</li>
-            <li>- Suitable for all ages and skill levels</li>
-            <li>- Build a solid foundation faster</li>
-            <li>- Great for kids to build confidence quickly</li>
+            <li>- Accelerate your progress</li>
+            <li>- Focus on your specific goals</li>
+            <li>- Ideal for self-defense or competition prep</li>
+            <li>- Get the boost you need to succeed</li>
           </ul>
         </div>
         <div className="program-details-image">
-          <img src="https://placehold.co/600x400?text=One-on-One" alt="Private Jiu Jitsu lesson" />
+          <img src="https://placehold.co/600x400?text=Instructor+Coaching" alt="Instructor coaching a student" />
         </div>
       </section>
 
-      <section className="benefits-grid">
-        <div className="benefit-item">
-          <h3>Personalized Feedback</h3>
-          <p>Receive immediate, detailed feedback tailored specifically to your needs and goals.</p>
-        </div>
-        <div className="benefit-item">
-          <h3>Faster Results</h3>
-          <p>A focused environment means you can master techniques and concepts much more quickly.</p>
-        </div>
-        <div className="benefit-item">
-          <h3>Flexible Scheduling</h3>
-          <p>Work with our instructors to find a time for your private lesson that fits your schedule.</p>
-        </div>
-        <div className="benefit-item">
-          <h3>For Everyone</h3>
-          <p>Beginners can build a strong foundation, while advanced students can perfect their game.</p>
-        </div>
-      </section>
+      <FAQ faqData={pageFaqs} title="Private Lessons FAQs" />
     </div>
   );
 };

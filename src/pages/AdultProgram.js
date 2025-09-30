@@ -1,55 +1,70 @@
 import React from 'react';
 import './ProgramPage.css';
+import FAQ from '../components/FAQ';
 
 const AdultProgram = () => {
+  const pageFaqs = [
+    {
+      question: "Does the training cover self-defense techniques?",
+      answer: "Jiu Jitsu is an inherently effective self-defense system. Our curriculum incorporates techniques for real-life situations, focusing on controlling an opponent regardless of size or strength."
+    },
+    {
+      question: "Do I need any previous martial arts experience to join the Adult Program?",
+      answer: "No. We welcome complete beginners and recommend starting with our Fundamentals Program to build a solid, safe foundation before moving to the main Adult classes."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": pageFaqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
   return (
     <div className="program-page">
-      <section className="program-hero" style={{ backgroundImage: "url('https://placehold.co/1920x1080?text=Adults+Training')" }}>
+      <script type="application/ld+json">
+        {JSON.stringify(faqSchema)}
+      </script>
+      <section className="program-hero" style={{ backgroundImage: "url('https://placehold.co/1920x1080?text=Adults+Sparring')" }}>
         <h1 className="program-hero-title">Adult Program</h1>
       </section>
 
       <section className="program-intro">
         <p>
-          Brazilian Jiu Jitsu is more than a martial art—it's a combat sport, a self-defense system, and an effective fitness program designed for adults of all skill levels.
+          Our Adult Jiu Jitsu program provides a supportive environment for beginners and advanced students alike. Whether your goal is self-defense, fitness, or personal growth, you’ll find the right path here. Classes include both gi and no-gi Jiu Jitsu in Katy, TX.
         </p>
       </section>
 
       <section className="program-details-section">
         <div className="program-details-text">
-          <h2>Fitness, Self-Defense & Stress Reduction</h2>
+          <h2>Self-Defense, Fitness, and Growth</h2>
           <p>
-            Join us at Reign Jiu Jitsu in Katy for a program that delivers sustainable weight loss, lean muscle gain, improved confidence, and reduced stress.
+            Our classes are designed to help you achieve your goals, whether you're a beginner or an advanced student.
           </p>
           <ul>
-            <li>- Morning, noon, and evening classes available</li>
-            <li>- No previous martial arts experience required</li>
-            <li>- Welcoming environment for complete beginners</li>
-            <li>- Compassionate, world-class instructors</li>
+            <li>- Learn effective self-defense techniques</li>
+            <li>- Improve your fitness and overall health</li>
+            <li>- Experience personal growth in a supportive community</li>
+            <li>- Classes include both Gi and No-Gi training</li>
           </ul>
         </div>
         <div className="program-details-image">
-          <img src="https://placehold.co/600x400?text=Adult+Class" alt="Adults training Jiu Jitsu" />
+          <img src="https://placehold.co/600x400?text=Adults+Drilling" alt="Adults drilling techniques" />
         </div>
       </section>
 
-      <section className="benefits-grid">
-        <div className="benefit-item">
-          <h3>Weight Loss</h3>
-          <p>An effective fitness program that promotes sustainable weight loss and lean muscle gain.</p>
-        </div>
-        <div className="benefit-item">
-          <h3>Confidence</h3>
-          <p>Gain confidence and boost your energy levels both on and off the mats.</p>
-        </div>
-        <div className="benefit-item">
-          <h3>Stress Relief</h3>
-          <p>A healthy outlet for stress that contributes to better sleep and mental clarity.</p>
-        </div>
-        <div className="benefit-item">
-          <h3>Flexibility</h3>
-          <p>With classes throughout the day, you can find a time that fits your busy schedule.</p>
-        </div>
-      </section>
+      <div style={{'textAlign':'center', 'marginBottom': '60px'}}>
+        <img src="https://placehold.co/600x400?text=Group+Adult+Photo" alt="Group adult photo" />
+      </div>
+
+      <FAQ faqData={pageFaqs} title="Adult Program FAQs" />
     </div>
   );
 };

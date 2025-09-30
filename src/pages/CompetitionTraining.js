@@ -1,55 +1,66 @@
 import React from 'react';
 import './ProgramPage.css';
+import FAQ from '../components/FAQ';
 
 const CompetitionTraining = () => {
+  const pageFaqs = [
+    {
+      question: "Does the program include nutritional guidance?",
+      answer: "Yes, our customized training includes key nutrition strategies and advice from a dedicated coach to optimize weight cuts and maximize in-competition performance."
+    },
+    {
+      question: "What level of experience is required for Competition Training?",
+      answer: "This program is geared toward intermediate to advanced practitioners (typically blue belt and up) who have a solid understanding of the fundamentals and are looking to specialize."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": pageFaqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
   return (
     <div className="program-page">
-      <section className="program-hero" style={{ backgroundImage: "url('https://placehold.co/1920x1080?text=Competition+Training')" }}>
+      <script type="application/ld+json">
+        {JSON.stringify(faqSchema)}
+      </script>
+      <section className="program-hero" style={{ backgroundImage: "url('https://placehold.co/1920x1080?text=Students+at+a+tournament')" }}>
         <h1 className="program-hero-title">Competition Training</h1>
       </section>
 
       <section className="program-intro">
         <p>
-          Elevate your performance with our Competition Training program, giving you access to 100% customized fitness on a flexible schedule and direct coaching from a World Champion.
+          For those who want to take their training to the next level, our Competition Training program is led by experienced coaches who prepare students for local, national, and international tournaments. Push yourself, sharpen your game, and represent BJJ Katy Texas with pride.
         </p>
       </section>
 
       <section className="program-details-section">
         <div className="program-details-text">
-          <h2>Led by a World Champion</h2>
+          <h2>Prepare for the Podium</h2>
           <p>
-            You benefit from the direct coaching and high-level strategy of a World Champion Black Belt, Pablo Silva. Our program includes goal-oriented workouts and key nutrition strategies to ensure you are ready to compete.
+            Our program is designed to sharpen your game and prepare you for the highest levels of competition.
           </p>
           <ul>
-            <li>- Direct access to elite-level coaching</li>
-            <li>- Customized fitness and nutrition plans</li>
-            <li>- High-level strategy and goal-oriented workouts</li>
-            <li>- Prepare for local and major competitions</li>
+            <li>- Led by experienced, world-class coaches</li>
+            <li>- Prepare for local, national, and international tournaments</li>
+            <li>- Sharpen your game and push your limits</li>
+            <li>- Represent BJJ in Katy, Texas with pride</li>
           </ul>
         </div>
         <div className="program-details-image">
-          <img src="https://placehold.co/600x400?text=Competitor" alt="Jiu Jitsu competitor" />
+          <img src="https://placehold.co/600x400?text=Team+with+medals" alt="Team with medals" />
         </div>
       </section>
 
-      <section className="benefits-grid">
-        <div className="benefit-item">
-          <h3>Elite Coaching</h3>
-          <p>Train directly under a World Champion Black Belt and gain a competitive edge.</p>
-        </div>
-        <div className="benefit-item">
-          <h3>Customized Fitness</h3>
-          <p>Receive a training and nutrition plan tailored to your specific competition goals.</p>
-        </div>
-        <div className="benefit-item">
-          <h3>Advanced Strategy</h3>
-          <p>Learn the high-level strategies needed to succeed at the highest levels of the sport.</p>
-        </div>
-        <div className="benefit-item">
-          <h3>Peak Performance</h3>
-          <p>We ensure you are physically and mentally ready to perform your best at any event.</p>
-        </div>
-      </section>
+      <FAQ faqData={pageFaqs} title="Competition Training FAQs" />
     </div>
   );
 };
