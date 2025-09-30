@@ -1,6 +1,6 @@
 import React from 'react';
 import './HeroSection.css';
-import TextSphere from './TextSphere'; // Import the new component
+import CircularText from './CircularText'; // Import the new component
 
 const HeroSection = () => {
   return (
@@ -14,7 +14,7 @@ const HeroSection = () => {
       </div>
       <div className="hero-content">
         <h1 className="hero-main-title">Katy’s Premier Jiu Jitsu Academy – Programs for Kids, Adults, and Families</h1>
-        <TextSphere />
+        <CircularText />
         <button className="hero-cta-button">Book Your Trial Class</button>
       </div>
     </section>
