@@ -1,0 +1,55 @@
+/* src/components/Programs.css */
+
+.programs-section {
+  padding: 80px 20px;
+  background-color: #F9F9F9; /* Light gray background */
+}
+
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.program-card {
+  background: var(--background-primary);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.program-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.program-image-wrapper img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(100%);
+  border-radius: 8px 8px 0 0;
+}
+
+.program-content {
+  padding: 25px;
+}
+
+.program-title {
+  font-size: 22px;
+  font-family: var(--font-heading-secondary);
+  color: var(--text-charcoal);
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.program-description {
+  font-size: 16px;
+  color: var(--text-dark-gray);
+  line-height: 1.6;
+}

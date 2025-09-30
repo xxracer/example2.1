@@ -1,0 +1,50 @@
+/* src/components/WelcomeSection.css */
+
+.welcome-section {
+  padding: 80px 20px;
+  background-color: var(--background-primary);
+}
+
+.welcome-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.welcome-text-content {
+  margin-bottom: 40px;
+}
+
+.welcome-title {
+  font-family: var(--font-heading-secondary);
+  font-size: 32px;
+  color: var(--text-charcoal);
+  margin-bottom: 20px;
+}
+
+.welcome-seo-text {
+  font-family: var(--font-body);
+  font-size: 18px;
+  color: var(--text-dark-gray);
+  line-height: 1.7;
+  max-width: 800px;
+  margin: 0 auto 30px auto;
+}
+
+.brush-separator {
+  height: 2px;
+  width: 100px;
+  background-color: var(--border-light-gray);
+  margin: 0 auto;
+  /* A real implementation might use an SVG or a background-image for a brush effect */
+  opacity: 0.6;
+}
+
+.welcome-image-wrapper img {
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  object-fit: cover;
+  filter: grayscale(100%);
+  border-radius: 8px; /* A subtle touch */
+}

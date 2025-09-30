@@ -1,0 +1,81 @@
+/* src/components/ContactUs.css */
+
+.contact-us-section {
+  padding: 80px 20px;
+  background-color: #F9F9F9;
+}
+
+.contact-us-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.contact-map-container {
+  width: 400px;
+  height: 350px;
+}
+
+.contact-map-placeholder {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 1px solid #FFFFFF;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  filter: grayscale(100%);
+  opacity: 0.8;
+}
+
+.contact-form-container {
+  width: 400px;
+  text-align: center;
+}
+
+.contact-form-container .section-title {
+  margin-bottom: 30px;
+}
+
+.contact-form-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form-container input,
+.contact-form-container textarea {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid var(--border-light-gray);
+  border-radius: 5px;
+  font-family: var(--font-body);
+  font-size: 16px;
+  background-color: var(--input-background); /* #F5F5F5 */
+}
+
+.contact-form-container input:focus,
+.contact-form-container textarea:focus {
+  outline: 1px solid var(--text-charcoal);
+  border-color: var(--text-charcoal);
+}
+
+.submit-button {
+  background-color: var(--text-charcoal);
+  color: var(--background-primary);
+  border: 2px solid var(--text-charcoal);
+  border-radius: 5px;
+  padding: 14px;
+  font-family: var(--font-heading-secondary);
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: var(--text-dark-gray);
+  border-color: var(--text-dark-gray);
+}

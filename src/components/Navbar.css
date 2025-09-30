@@ -1,0 +1,108 @@
+/* src/components/Navbar.css */
+
+.main-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  z-index: 1000;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.navbar-logo {
+  font-family: var(--font-heading-primary);
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.navbar-logo a {
+  color: var(--text-charcoal);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navbar-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.navbar-links > li > a {
+  font-family: var(--font-heading-secondary);
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--text-charcoal);
+  transition: color 0.3s ease;
+  padding-bottom: 5px; /* Space for an eventual underline effect */
+}
+
+/* Dropdown styling */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--background-primary);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  list-style: none;
+  padding: 10px 0;
+  margin-top: 15px; /* Space between main item and dropdown */
+  border-radius: 4px;
+  min-width: 220px;
+  z-index: 1001;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu li {
+  padding: 0;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 12px 20px;
+  font-size: 15px;
+  white-space: nowrap;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f1f1f1;
+}
+
+/* --- Scrolled State --- */
+.scrolled .main-navbar {
+  background-color: var(--text-charcoal);
+}
+
+.scrolled .navbar-links a,
+.scrolled .navbar-logo a {
+  color: var(--background-primary);
+}
+
+.scrolled .dropdown-menu {
+  background-color: var(--text-charcoal);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+}
+
+.scrolled .dropdown-menu a {
+  color: var(--background-primary);
+}
+
+.scrolled .dropdown-menu a:hover {
+  background-color: #333;
+}
