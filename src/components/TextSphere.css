@@ -18,10 +18,10 @@
 
 @keyframes rotate {
   from {
-    transform: rotateY(0deg) rotateX(0deg);
+    transform: rotateY(0deg);
   }
   to {
-    transform: rotateY(360deg) rotateX(360deg);
+    transform: rotateY(360deg);
   }
 }
 
@@ -32,8 +32,8 @@
   font-family: var(--font-heading-secondary);
   font-weight: 600;
   font-size: 18px;
-  color: var(--text-charcoal);
-  background-color: rgba(255, 255, 255, 0.8);
+  color: var(--text-charcoal); /* Black text */
+  background-color: transparent; /* Remove background from tags */
   padding: 5px 10px;
   border-radius: 5px;
   white-space: nowrap;

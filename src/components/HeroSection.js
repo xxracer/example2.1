@@ -13,7 +13,7 @@ const HeroSection = () => {
         <div className="hero-overlay"></div>
       </div>
       <div className="hero-content">
-        <h1 className="hero-main-title">Train to Reign at Reign Jiu Jitsu</h1>
+        <h1 className="hero-main-title">Katy’s Premier Jiu Jitsu Academy – Programs for Kids, Adults, and Families</h1>
         <TextSphere />
         <button className="hero-cta-button">Book Your Trial Class</button>
       </div>
