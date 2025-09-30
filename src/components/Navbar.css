@@ -16,10 +16,10 @@
 }
 
 .navbar-logo a {
-  color: var(--text-charcoal); /* Black text for over the video */
+  color: var(--background-primary); /* White text for over the video */
   text-decoration: none;
   transition: color 0.3s ease, text-shadow 0.3s ease;
-  text-shadow: 1px 1px 3px rgba(200, 200, 200, 0.5); /* Add subtle gray shadow */
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.8); /* Dark shadow for high contrast */
 }
 
 .navbar-links > li > a {
@@ -27,11 +27,11 @@
   font-size: 16px;
   font-weight: 600;
   text-decoration: none;
-  color: var(--text-charcoal); /* Black text for over the video */
+  color: var(--background-primary); /* White text for over the video */
   transition: color 0.3s ease, text-shadow 0.3s ease;
   padding-bottom: 5px;
   cursor: pointer;
-  text-shadow: 1px 1px 3px rgba(200, 200, 200, 0.5); /* Add subtle gray shadow */
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.8); /* Dark shadow for high contrast */
 }
 
 /* --- Scrolled State (Black Navbar) --- */
