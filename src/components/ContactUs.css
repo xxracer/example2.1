@@ -17,32 +17,39 @@
 
 .contact-map-container {
   width: 400px;
-  height: 350px;
+  height: 450px; /* Increased height to match form */
 }
 
-.contact-map-placeholder {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border: 1px solid #FFFFFF;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  filter: grayscale(100%);
-  opacity: 0.8;
-}
-
-.contact-text-container {
+.contact-form-container {
   width: 400px;
   text-align: center;
 }
 
-.contact-text-container .section-title {
-  margin-bottom: 20px;
+.contact-form-container .section-title {
+  margin-bottom: 30px;
 }
 
-.contact-text-container p {
+.contact-form-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form-container input,
+.contact-form-container textarea {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid var(--border-light-gray);
+  border-radius: 5px;
+  font-family: var(--font-body);
   font-size: 16px;
-  line-height: 1.7;
-  margin-bottom: 30px;
+  background-color: var(--input-background); /* #F5F5F5 */
+}
+
+.contact-form-container input:focus,
+.contact-form-container textarea:focus {
+  outline: 1px solid var(--text-charcoal);
+  border-color: var(--text-charcoal);
 }
 
 .submit-button {

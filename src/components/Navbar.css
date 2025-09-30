@@ -36,10 +36,10 @@
 }
 
 .navbar-logo a {
-  color: var(--background-primary); /* White text for over the video */
+  color: var(--text-charcoal); /* Black text for over the video */
   text-decoration: none;
   transition: color 0.3s ease, text-shadow 0.3s ease;
-  text-shadow: 0 0 8px rgba(0, 0, 0, 0.7); /* Add shadow for readability */
+  text-shadow: 1px 1px 3px rgba(200, 200, 200, 0.5); /* Add subtle gray shadow for readability */
 }
 
 .navbar-links {
@@ -56,11 +56,11 @@
   font-size: 16px;
   font-weight: 600;
   text-decoration: none;
-  color: var(--background-primary); /* White text for over the video */
+  color: var(--text-charcoal); /* Black text for over the video */
   transition: color 0.3s ease, text-shadow 0.3s ease;
   padding-bottom: 5px;
   cursor: pointer;
-  text-shadow: 0 0 8px rgba(0, 0, 0, 0.7); /* Add shadow for readability */
+  text-shadow: 1px 1px 3px rgba(200, 200, 200, 0.5); /* Add subtle gray shadow for readability */
 }
 
 /* Dropdown styling */
