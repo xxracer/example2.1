@@ -1,9 +1,37 @@
 import React from 'react';
 import './ProgramPage.css';
+import FAQ from '../components/FAQ';
 
 const FundamentalsProgram = () => {
+  const pageFaqs = [
+    {
+      question: "Who is the Fundamentals Program for?",
+      answer: "It's designed for new students who are just beginning their Jiu Jitsu journey. It's the perfect entry point before joining the main adult classes."
+    },
+    {
+      question: "What will I learn in this program?",
+      answer: "You will learn the core movements, body positioning, and essential self-defense techniques that form the bedrock of the art, all in a safe and supportive environment."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": pageFaqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
   return (
     <div className="program-page">
+      <script type="application/ld+json">
+        {JSON.stringify(faqSchema)}
+      </script>
       <section className="program-hero" style={{ backgroundImage: "url('https://placehold.co/1920x1080?text=Fundamentals+Class')" }}>
         <h1 className="program-hero-title">Fundamentals Program</h1>
       </section>
@@ -35,6 +63,8 @@ const FundamentalsProgram = () => {
       <div style={{'textAlign':'center', 'marginBottom': '60px'}}>
         <img src="https://placehold.co/600x400?text=New+Students+Practicing" alt="New students practicing" />
       </div>
+
+      <FAQ faqData={pageFaqs} title="Fundamentals Program FAQs" />
     </div>
   );
 };

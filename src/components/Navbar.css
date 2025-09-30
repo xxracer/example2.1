@@ -1,5 +1,6 @@
 /* src/components/Navbar.css */
 
+/* --- Default (Transparent) State --- */
 .main-navbar {
   position: fixed;
   top: 0;
@@ -10,45 +11,15 @@
   align-items: center;
   padding: 20px 40px;
   z-index: 1000;
+  background-color: transparent; /* Default is transparent */
   transition: background-color 0.4s ease, color 0.4s ease;
-}
-
-.navbar-left,
-.navbar-right {
-  flex: 1;
-  display: flex;
-}
-
-.navbar-left {
-  justify-content: flex-start;
-}
-
-.navbar-right {
-  justify-content: flex-end;
-}
-
-.navbar-logo {
-  flex-grow: 0;
-  text-align: center;
-  font-family: var(--font-heading-primary);
-  font-size: 28px;
-  font-weight: 700;
 }
 
 .navbar-logo a {
   color: var(--text-charcoal); /* Black text for over the video */
   text-decoration: none;
   transition: color 0.3s ease, text-shadow 0.3s ease;
-  text-shadow: 1px 1px 3px rgba(200, 200, 200, 0.5); /* Add subtle gray shadow for readability */
-}
-
-.navbar-links {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  gap: 40px;
+  text-shadow: 1px 1px 3px rgba(200, 200, 200, 0.5); /* Add subtle gray shadow */
 }
 
 .navbar-links > li > a {
@@ -60,49 +31,10 @@
   transition: color 0.3s ease, text-shadow 0.3s ease;
   padding-bottom: 5px;
   cursor: pointer;
-  text-shadow: 1px 1px 3px rgba(200, 200, 200, 0.5); /* Add subtle gray shadow for readability */
+  text-shadow: 1px 1px 3px rgba(200, 200, 200, 0.5); /* Add subtle gray shadow */
 }
 
-/* Dropdown styling */
-.dropdown {
-  position: relative;
-}
-
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0; /* Align with the parent item */
-  background-color: var(--background-primary);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-  list-style: none;
-  padding: 10px 0;
-  margin-top: 15px;
-  border-radius: 4px;
-  min-width: 220px;
-  z-index: 1001;
-}
-
-.dropdown-menu.open {
-  display: block;
-}
-
-.dropdown-menu li {
-  padding: 0;
-}
-
-.dropdown-menu a {
-  display: block;
-  padding: 12px 20px;
-  font-size: 15px;
-  white-space: nowrap;
-}
-
-.dropdown-menu a:hover {
-  background-color: #f1f1f1;
-}
-
-/* --- Scrolled State --- */
+/* --- Scrolled State (Black Navbar) --- */
 .scrolled .main-navbar {
   background-color: var(--text-charcoal);
 }
@@ -148,5 +80,76 @@
 }
 
 .scrolled-past .dropdown-menu a:hover {
+  background-color: #f1f1f1;
+}
+
+
+/* --- General Styles (unrelated to scroll) --- */
+.navbar-left,
+.navbar-right {
+  flex: 1;
+  display: flex;
+}
+
+.navbar-left {
+  justify-content: flex-start;
+}
+
+.navbar-right {
+  justify-content: flex-end;
+}
+
+.navbar-logo {
+  flex-grow: 0;
+  text-align: center;
+  font-family: var(--font-heading-primary);
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.navbar-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0; /* Align with the parent item */
+  background-color: var(--background-primary);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  list-style: none;
+  padding: 10px 0;
+  margin-top: 15px;
+  border-radius: 4px;
+  min-width: 220px;
+  z-index: 1001;
+}
+
+.dropdown-menu.open {
+  display: block;
+}
+
+.dropdown-menu li {
+  padding: 0;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 12px 20px;
+  font-size: 15px;
+  white-space: nowrap;
+}
+
+.dropdown-menu a:hover {
   background-color: #f1f1f1;
 }

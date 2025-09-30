@@ -3,9 +3,7 @@ import './TextSphere.css';
 
 const TextSphere = () => {
   const texts = [
-    'Jiu Jitsu', 'Kids Jiu Jitsu', 'Personal Training', 'Private Training',
-    'Self-Defense', 'Fitness', 'Community', 'Discipline',
-    'Confidence', 'Respect', 'Growth', 'BJJ Katy'
+    'Jiu Jitsu', 'Kids Jiu Jitsu', 'Personal Training', 'Private Training'
   ];
 
   const [radius, setRadius] = useState(150);
