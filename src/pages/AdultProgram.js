@@ -1,46 +1,55 @@
 import React from 'react';
+import './ProgramPage.css';
 
 const AdultProgram = () => {
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Is BJJ a good workout for weight loss and muscle gain?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, BJJ is an effective fitness program that promotes sustainable weight loss and lean muscle gain while offering superior mental benefits like stress reduction and improved sleep."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Are there morning, noon, or evening classes available?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "We schedule classes to fit various adult routines, including morning BJJ classes, noon classes for lunch breaks, and evening classes after work, offering great flexibility."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do I need any previous martial arts experience to join the Adult Program?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. The program is structured to welcome complete beginners, guiding you safely through the fundamentals and ensuring you gain confidence before advancing."
-        }
-      }
-    ]
-  };
-
   return (
-    <div style={{ padding: '100px 20px', textAlign: 'center' }}>
-      <script type="application/ld+json">
-        {JSON.stringify(faqSchema)}
-      </script>
-      <h1>Adult Jiu Jitsu Classes in Katy: Fitness, Self-Defense, and Stress Reduction</h1>
-      <p>
-        Brazilian Jiu Jitsu is more than a martial art—it's a combat sport, a self-defense system, and an effective fitness program. Join us at Reign Jiu Jitsu in Katy for: sustainable weight loss & lean muscle gain; improved confidence & boosted energy; and reduced stress for better sleep. Whether you're a complete beginner or an experienced practitioner coming from Lumberton or Nederland, our compassionate instructors will guide you to success.
-      </p>
+    <div className="program-page">
+      <section className="program-hero" style={{ backgroundImage: "url('https://placehold.co/1920x1080?text=Adults+Training')" }}>
+        <h1 className="program-hero-title">Adult Program</h1>
+      </section>
+
+      <section className="program-intro">
+        <p>
+          Brazilian Jiu Jitsu is more than a martial art—it's a combat sport, a self-defense system, and an effective fitness program designed for adults of all skill levels.
+        </p>
+      </section>
+
+      <section className="program-details-section">
+        <div className="program-details-text">
+          <h2>Fitness, Self-Defense & Stress Reduction</h2>
+          <p>
+            Join us at Reign Jiu Jitsu in Katy for a program that delivers sustainable weight loss, lean muscle gain, improved confidence, and reduced stress.
+          </p>
+          <ul>
+            <li>- Morning, noon, and evening classes available</li>
+            <li>- No previous martial arts experience required</li>
+            <li>- Welcoming environment for complete beginners</li>
+            <li>- Compassionate, world-class instructors</li>
+          </ul>
+        </div>
+        <div className="program-details-image">
+          <img src="https://placehold.co/600x400?text=Adult+Class" alt="Adults training Jiu Jitsu" />
+        </div>
+      </section>
+
+      <section className="benefits-grid">
+        <div className="benefit-item">
+          <h3>Weight Loss</h3>
+          <p>An effective fitness program that promotes sustainable weight loss and lean muscle gain.</p>
+        </div>
+        <div className="benefit-item">
+          <h3>Confidence</h3>
+          <p>Gain confidence and boost your energy levels both on and off the mats.</p>
+        </div>
+        <div className="benefit-item">
+          <h3>Stress Relief</h3>
+          <p>A healthy outlet for stress that contributes to better sleep and mental clarity.</p>
+        </div>
+        <div className="benefit-item">
+          <h3>Flexibility</h3>
+          <p>With classes throughout the day, you can find a time that fits your busy schedule.</p>
+        </div>
+      </section>
     </div>
   );
 };

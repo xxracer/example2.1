@@ -122,3 +122,27 @@
 .scrolled .dropdown-menu a:hover {
   background-color: #333;
 }
+
+/* --- Scrolled Past State (White Navbar) --- */
+.scrolled-past .main-navbar {
+  background-color: var(--background-primary);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Add a subtle shadow */
+}
+
+.scrolled-past .navbar-links a,
+.scrolled-past .navbar-logo a {
+  color: var(--text-charcoal);
+}
+
+.scrolled-past .dropdown-menu {
+  background-color: var(--background-primary);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.scrolled-past .dropdown-menu a {
+  color: var(--text-charcoal);
+}
+
+.scrolled-past .dropdown-menu a:hover {
+  background-color: #f1f1f1;
+}
