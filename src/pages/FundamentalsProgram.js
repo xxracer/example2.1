@@ -4,52 +4,37 @@ import './ProgramPage.css';
 const FundamentalsProgram = () => {
   return (
     <div className="program-page">
-      <section className="program-hero" style={{ backgroundImage: "url('https://placehold.co/1920x1080?text=Fundamentals')" }}>
+      <section className="program-hero" style={{ backgroundImage: "url('https://placehold.co/1920x1080?text=Fundamentals+Class')" }}>
         <h1 className="program-hero-title">Fundamentals Program</h1>
       </section>
 
       <section className="program-intro">
         <p>
-          Our Fundamentals Program is the perfect entry point for new students. We focus on the core movements, body positioning, and essential self-defense techniques that form the bedrock of the art.
+          Start your journey with our Fundamentals Jiu Jitsu classes. This program covers basic movements, positions, and techniques, ensuring that new students build a strong foundation. Perfect for those looking for beginner Jiu Jitsu near me.
         </p>
       </section>
 
       <section className="program-details-section">
         <div className="program-details-text">
-          <h2>Start Your Journey Here</h2>
+          <h2>Build a Strong Foundation</h2>
           <p>
-            This dedicated class environment ensures you learn safely and effectively, gaining the confidence needed to transition smoothly into the main Adult Program.
+            Our fundamentals program is designed to give you the confidence and skills you need to succeed in your Jiu Jitsu journey.
           </p>
           <ul>
-            <li>- Introduction to both Gi and No-Gi styles</li>
-            <li>- No fitness level required to start</li>
-            <li>- Focus on core movements and body positioning</li>
-            <li>- Learn essential self-defense techniques</li>
+            <li>- Learn basic movements and positions</li>
+            <li>- Understand core techniques</li>
+            <li>- Build a solid foundation for advanced classes</li>
+            <li>- Perfect for beginners</li>
           </ul>
         </div>
         <div className="program-details-image">
-          <img src="https://placehold.co/600x400?text=Beginner+Class" alt="Beginners learning Jiu Jitsu" />
+          <img src="https://placehold.co/600x400?text=Instructor+Demonstrating" alt="Instructor demonstrating a basic move" />
         </div>
       </section>
 
-      <section className="benefits-grid">
-        <div className="benefit-item">
-          <h3>Safe Learning</h3>
-          <p>A controlled and dedicated environment designed for those brand new to the art.</p>
-        </div>
-        <div className="benefit-item">
-          <h3>Build Fitness</h3>
-          <p>The program is designed to help you build fitness at your own pace as you learn.</p>
-        </div>
-        <div className="benefit-item">
-          <h3>Core Concepts</h3>
-          <p>Master the foundational techniques that all of Jiu Jitsu is built upon.</p>
-        </div>
-        <div className="benefit-item">
-          <h3>Gain Confidence</h3>
-          <p>Develop the confidence to safely and effectively join the more advanced classes.</p>
-        </div>
-      </section>
+      <div style={{'textAlign':'center', 'marginBottom': '60px'}}>
+        <img src="https://placehold.co/600x400?text=New+Students+Practicing" alt="New students practicing" />
+      </div>
     </div>
   );
 };

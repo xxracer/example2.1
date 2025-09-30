@@ -1,33 +1,23 @@
 import React from 'react';
 import './Testimonials.css';
 
-const testimonials = [
-  {
-    quote: "Training at Reign Jiu Jitsu has built my confidence and skill like no other academy.",
-    author: "— Jane D.",
-    image: "https://placehold.co/60x60?text=JD"
-  },
-  {
-    quote: "The best coaches and a fantastic community. My entire family trains here and we love it.",
-    author: "— Mike S.",
-    image: "https://placehold.co/60x60?text=MS"
-  }
-];
-
 const Testimonials = () => {
   return (
     <section id="reviews" className="testimonials-section">
-      <h2 className="section-title">What Our Students Say</h2>
+      <h2 className="section-title">Reviews</h2>
       <div className="testimonials-container">
-        {testimonials.map((testimonial, index) => (
-          <div key={index} className="testimonial-card">
-            <img src={testimonial.image} alt={`Testimonial from ${testimonial.author}`} className="testimonial-image" />
-            <div className="testimonial-content">
-              <p className="testimonial-quote">“{testimonial.quote}”</p>
-              <p className="testimonial-author">{testimonial.author}</p>
-            </div>
+        <div className="testimonial-card">
+          <div className="testimonial-content">
+            <p className="testimonial-quote" style={{fontStyle: 'normal', textAlign: 'center'}}>
+              “Parents and students agree – Reign Jiu Jitsu is the best Jiu Jitsu in Houston. From kids’ martial arts to adult training, our members love the family-friendly atmosphere, professional instruction, and results-driven programs. Whether you’re looking for kids Jiu Jitsu near me or private Jiu Jitsu classes near me, our academy is trusted by the community.”
+            </p>
           </div>
-        ))}
+          <img
+            src="https://placehold.co/600x400?text=Smiling+Family"
+            alt="Smiling family after class"
+            className="testimonial-main-image" // A new class for styling
+          />
+        </div>
       </div>
     </section>
   );

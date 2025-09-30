@@ -4,18 +4,39 @@ import './Programs.css';
 const programsData = [
   {
     title: 'Kids Program',
-    description: 'Confidence and discipline training for children ages 4-13 in a positive and safe environment.',
-    image: 'https://placehold.co/280x180?text=Kids+Program'
+    description: 'Confidence, discipline, and fun for children.',
+    image: 'https://placehold.co/280x180?text=Kids+Class',
+    alt: 'Kids class in session'
   },
   {
-    title: 'Adult Program',
-    description: 'Comprehensive self-defense and fitness classes tailored for all skill levels.',
-    image: 'https://placehold.co/280x180?text=Adult+Program'
+    title: 'Homeschool Jiu Jitsu',
+    description: 'Daytime classes for homeschool families.',
+    image: 'https://placehold.co/280x180?text=Homeschool+BJJ',
+    alt: 'Homeschool Jiu Jitsu class'
+  },
+  {
+    title: 'Adult Jiu Jitsu',
+    description: 'For self-defense, fitness, and growth.',
+    image: 'https://placehold.co/280x180?text=Adults+Rolling',
+    alt: 'Adults rolling on mats'
+  },
+  {
+    title: 'Fundamentals Program',
+    description: 'Perfect for new students.',
+    image: 'https://placehold.co/280x180?text=Fundamentals',
+    alt: 'Fundamentals class'
   },
   {
     title: 'Competition Training',
-    description: 'Advanced techniques, sparring, and coaching for competitive athletes.',
-    image: 'https://placehold.co/280x180?text=Competition+Training'
+    description: 'For athletes who want to test themselves on the mat.',
+    image: 'https://placehold.co/280x180?text=Competition+Highlight',
+    alt: 'Competition highlight photo'
+  },
+  {
+    title: 'Private Lessons',
+    description: 'One-on-one coaching for faster progress.',
+    image: 'https://placehold.co/280x180?text=Private+Lesson',
+    alt: 'Private BJJ lesson'
   }
 ];
 
@@ -27,7 +48,7 @@ const Programs = () => {
         {programsData.map((program, index) => (
           <div key={index} className="program-card">
             <div className="program-image-wrapper">
-              <img src={program.image} alt={program.title} />
+              <img src={program.image} alt={program.alt} />
             </div>
             <div className="program-content">
               <h3 className="program-title">{program.title}</h3>

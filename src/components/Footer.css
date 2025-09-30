@@ -12,6 +12,13 @@
   text-align: center;
 }
 
+.footer-seo-text p {
+  font-size: 14px;
+  color: var(--text-medium-gray);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
 .footer-links {
   display: flex;
   justify-content: center;
