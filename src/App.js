@@ -22,6 +22,7 @@ import ContactPage from './pages/ContactPage';
 import AboutPage from './pages/AboutPage';
 import BlogPage from './pages/BlogPage';
 import FAQPage from './pages/FAQPage';
+import UpdateInstructors from './pages/UpdateInstructors';
 
 function App() {
   const [appClassName, setAppClassName] = useState('');
@@ -85,6 +86,7 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/faq" element={<FAQPage />} />
+            <Route path="/update-instructors" element={<UpdateInstructors />} />
           </Routes>
         </main>
         <Footer />
