@@ -28,9 +28,19 @@ function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 50;
-      if (isScrolled !== scrolled) {
-        setScrolled(isScrolled);
+      const welcomeSection = document.getElementById('welcome-section');
+      if (welcomeSection) {
+        // Add .scrolled class when the top of the welcome section reaches the top of the viewport
+        const isScrolled = welcomeSection.getBoundingClientRect().top <= 0;
+        if (isScrolled !== scrolled) {
+          setScrolled(isScrolled);
+        }
+      } else {
+        // Fallback for other pages: add .scrolled after scrolling 50px
+        const isScrolled = window.scrollY > 50;
+        if (isScrolled !== scrolled) {
+          setScrolled(isScrolled);
+        }
       }
     };
 
