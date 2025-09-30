@@ -24,23 +24,36 @@ import BlogPage from './pages/BlogPage';
 import FAQPage from './pages/FAQPage';
 
 function App() {
-  const [scrolled, setScrolled] = useState(false);
+  const [appClassName, setAppClassName] = useState('');
 
   useEffect(() => {
     const handleScroll = () => {
       const welcomeSection = document.getElementById('welcome-section');
+      let newClassName = '';
+
       if (welcomeSection) {
-        // Add .scrolled class when the top of the welcome section reaches the top of the viewport
-        const isScrolled = welcomeSection.getBoundingClientRect().top <= 0;
-        if (isScrolled !== scrolled) {
-          setScrolled(isScrolled);
+        const rect = welcomeSection.getBoundingClientRect();
+        const navbarHeight = 80; // Approximate height of the navbar
+        const topPassed = rect.top <= navbarHeight;
+        const bottomPassed = rect.bottom <= navbarHeight;
+
+        if (topPassed && !bottomPassed) {
+          // Scrolling over the welcome section -> black navbar
+          newClassName = 'scrolled';
+        } else if (bottomPassed) {
+          // Scrolled past the welcome section -> white navbar
+          newClassName = 'scrolled-past';
+        } else {
+          // Before the welcome section (in the hero) -> transparent navbar
+          newClassName = '';
         }
       } else {
-        // Fallback for other pages: add .scrolled after scrolling 50px
-        const isScrolled = window.scrollY > 50;
-        if (isScrolled !== scrolled) {
-          setScrolled(isScrolled);
-        }
+        // Fallback for other pages without a welcome section
+        newClassName = window.scrollY > 50 ? 'scrolled' : '';
+      }
+
+      if (newClassName !== appClassName) {
+        setAppClassName(newClassName);
       }
     };
 
@@ -49,11 +62,11 @@ function App() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [scrolled]);
+  }, [appClassName]);
 
   return (
     <Router>
-      <div className={`App ${scrolled ? 'scrolled' : ''}`}>
+      <div className={`App ${appClassName}`}>
         <Navbar />
         <main>
           <Routes>

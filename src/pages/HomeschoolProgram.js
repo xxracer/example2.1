@@ -1,54 +1,55 @@
 import React from 'react';
+import './ProgramPage.css';
 
 const HomeschoolProgram = () => {
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What are the qualifications of the instructor for the Homeschool program?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The program is led by a black belt instructor who also has a background as a Physical Education and Health teacher, providing a unique and qualified perspective for homeschool students."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can these classes count toward my child’s P.E. requirement?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, the program emphasizes physical fitness, helping children build strength, flexibility, and overall health, fulfilling the physical activity goals often associated with P.E."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Are the Homeschool classes different from the standard Kids Program?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "While the core art is the same, Homeschool classes are scheduled during daytime hours to align with homeschool schedules and focus on screen-free, dedicated physical instruction."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What unique benefits does the program offer for homeschool children?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "It provides valuable social development and connection with peers, alongside specialized instruction in confidence, discipline, and physical fitness."
-        }
-      }
-    ]
-  };
-
   return (
-    <div style={{ padding: '100px 20px', textAlign: 'center' }}>
-      <script type="application/ld+json">
-        {JSON.stringify(faqSchema)}
-      </script>
-      <h1>Katy Homeschool Martial Arts: Expert Jiu Jitsu Instruction for Physical Education</h1>
-      <p>
-        Reign Jiu Jitsu’s Homeschool Martial Arts Program in Katy offers expert Brazilian Jiu Jitsu instruction for children ages 6 and up. Your child will receive expert training from a black belt instructor with a background as a Physical Education and Health teacher. This unique program fulfills P.E. requirements through engaging, screen-free classes that build strength, confidence, and discipline, ensuring physical and mental growth.
-      </p>
+    <div className="program-page">
+      <section className="program-hero" style={{ backgroundImage: "url('https://placehold.co/1920x1080?text=Homeschool+BJJ')" }}>
+        <h1 className="program-hero-title">Homeschool Program</h1>
+      </section>
+
+      <section className="program-intro">
+        <p>
+          Reign Jiu Jitsu’s Homeschool Martial Arts Program in Katy offers expert instruction for children ages 6 and up, providing a unique and engaging way to fulfill P.E. requirements.
+        </p>
+      </section>
+
+      <section className="program-details-section">
+        <div className="program-details-text">
+          <h2>Led by a PE & Health Teacher</h2>
+          <p>
+            Your child will receive expert training from a black belt instructor who also has a background as a Physical Education and Health teacher. This unique program ensures physical and mental growth in a safe environment.
+          </p>
+          <ul>
+            <li>- Fulfills P.E. requirements</li>
+            <li>- Builds strength, confidence, and discipline</li>
+            <li>- Engaging, screen-free classes</li>
+            <li>- Promotes social development</li>
+          </ul>
+        </div>
+        <div className="program-details-image">
+          <img src="https://placehold.co/600x400?text=Homeschool+Group" alt="Homeschool Jiu Jitsu class" />
+        </div>
+      </section>
+
+      <section className="benefits-grid">
+        <div className="benefit-item">
+          <h3>Physical Fitness</h3>
+          <p>A structured program that helps children build strength, flexibility, and overall health.</p>
+        </div>
+        <div className="benefit-item">
+          <h3>Social Connection</h3>
+          <p>Provides valuable social development and connection with peers in a supportive setting.</p>
+        </div>
+        <div className="benefit-item">
+          <h3>Expert Instruction</h3>
+          <p>Daytime classes that align with homeschool schedules and focus on dedicated physical instruction.</p>
+        </div>
+        <div className="benefit-item">
+          <h3>Character Building</h3>
+          <p>Specialized instruction in confidence, discipline, and physical fitness from a qualified instructor.</p>
+        </div>
+      </section>
     </div>
   );
 };

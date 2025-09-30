@@ -1,14 +1,14 @@
 import React from 'react';
-import './KidsProgram.css';
+import './ProgramPage.css'; // Changed to the generic stylesheet
 
 const KidsProgram = () => {
   return (
-    <div className="kids-program-page">
-      <section className="kids-hero" style={{ backgroundImage: "url('https://placehold.co/1920x1080?text=Kids+Training')" }}>
-        <h1 className="kids-hero-title">Kids Program</h1>
+    <div className="program-page"> {/* Changed class name */}
+      <section className="program-hero" style={{ backgroundImage: "url('https://placehold.co/1920x1080?text=Kids+Training')" }}>
+        <h1 className="program-hero-title">Kids Program</h1> {/* Changed class name */}
       </section>
 
-      <section className="kids-intro">
+      <section className="program-intro"> {/* Changed class name */}
         <p>
           The Reign BJJ Kids Program is designed to provide benefits that extend far beyond the mats. We instill important core values like confidence, self-discipline, and respect through the martial art of Jiu Jitsu, helping to shape and positively impact the next generation.
         </p>
