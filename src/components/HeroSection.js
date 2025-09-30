@@ -1,5 +1,6 @@
 import React from 'react';
 import './HeroSection.css';
+import TextSphere from './TextSphere'; // Import the new component
 
 const HeroSection = () => {
   return (
@@ -13,10 +14,8 @@ const HeroSection = () => {
       </div>
       <div className="hero-content">
         <h1 className="hero-main-title">Train to Reign at Reign Jiu Jitsu</h1>
-        <p className="hero-subtitle">
-          The premier Jiu Jitsu academy in Katy, TX. Whether you’re looking for BJJ Katy, self-defense training, or a supportive martial arts community, our programs are designed for kids, adults, and families.
-        </p>
-        <button className="hero-cta-button">Book a Free Trial</button>
+        <TextSphere />
+        <button className="hero-cta-button">Book Your Trial Class</button>
       </div>
     </section>
   );
