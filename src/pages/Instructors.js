@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import FAQ from '../components/FAQ';
+import './Instructors.css'; // Import the new CSS file
 
 const API_URL = '/api/instructors';
 
@@ -38,35 +39,26 @@ const Instructors = () => {
   };
 
   return (
-    <div style={{ paddingTop: '120px', paddingBottom: '60px', maxWidth: '900px', margin: '0 auto' }}>
+    <div className="instructors-page">
       <script type="application/ld+json">
         {JSON.stringify(faqSchema)}
       </script>
-      <h1 style={{ textAlign: 'center', marginBottom: '40px' }}>Meet Our World-Class Instructors</h1>
+      <h1>Meet Our World-Class Instructors</h1>
 
-      {instructors.map((instructor, index) => {
-        const image = (
-          <img
-            src={instructor.image}
-            alt={instructor.name}
-            style={{ width: '100%', maxWidth: '300px', height: 'auto', borderRadius: '8px', flexShrink: 0 }}
-          />
-        );
-        const text = (
-          <div style={{ flex: 1, minWidth: '300px' }}>
-            <h2 style={{ marginTop: 0 }}>{instructor.name}</h2>
-            <p style={{ lineHeight: '1.7' }}>{instructor.bio}</p>
+      {instructors.map((instructor, index) => (
+        <div key={instructor.id} className={`instructor-item ${index % 2 !== 0 ? 'reverse' : ''}`}>
+          <div className="instructor-image-wrapper">
+            <img
+              src={instructor.image}
+              alt={instructor.name}
+            />
           </div>
-        );
-
-        // Alternate layout based on index
-        return (
-          <div key={instructor.id} style={{ display: 'flex', gap: '30px', alignItems: 'center', marginBottom: '50px', flexWrap: 'wrap', flexDirection: index % 2 === 0 ? 'row' : 'row-reverse' }}>
-            {image}
-            {text}
+          <div className="instructor-bio">
+            <h2>{instructor.name}</h2>
+            <p>{instructor.bio}</p>
           </div>
-        );
-      })}
+        </div>
+      ))}
 
       <FAQ faqData={pageFaqs} title="Instructor FAQs" />
     </div>

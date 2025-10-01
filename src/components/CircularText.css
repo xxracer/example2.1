@@ -5,17 +5,13 @@
   height: 300px;
   position: relative;
   margin: 40px auto 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
-.circular-text {
+.circular-text-svg {
   width: 100%;
   height: 100%;
-  position: relative;
-  border-radius: 50%;
   animation: rotate 30s linear infinite;
+  overflow: visible; /* Ensure text shadow is not clipped */
 }
 
 @keyframes rotate {
@@ -27,36 +23,30 @@
   }
 }
 
-.circular-text-char {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  height: 150px; /* This is the radius */
-  transform-origin: bottom center;
-  margin-left: -10px; /* Half of width to center */
-  width: 20px;
-  text-align: center;
-
+.circular-svg-text {
   font-family: var(--font-heading-secondary);
-  font-size: 18px;
+  font-size: 10px; /* Font size is relative to the SVG viewbox */
   font-weight: 600;
-  color: #FFFFFF;
+  fill: #FFFFFF; /* SVG uses 'fill' for color */
+  /* The text-shadow property works on SVG text */
   text-shadow:
-    -1px -1px 0 #000,
-     1px -1px 0 #000,
-    -1px  1px 0 #000,
-     1px  1px 0 #000;
+    -0.2px -0.2px 0 #000,
+     0.2px -0.2px 0 #000,
+    -0.2px  0.2px 0 #000,
+     0.2px  0.2px 0 #000;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .circular-text-container {
-    transform: scale(0.8);
+    width: 250px;
+    height: 250px;
   }
 }
 
 @media (max-width: 480px) {
   .circular-text-container {
-    transform: scale(0.7);
+    width: 200px;
+    height: 200px;
   }
 }
