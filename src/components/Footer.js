@@ -15,7 +15,6 @@ const Footer = () => {
           <a href="/contact">Contact</a>
           <a href="/about">About</a>
           <a href="/blog">Blog</a>
-          <a href="/update-instructors" style={{ color: '#e53e3e' }}>Admin</a>
         </div>
         <div className="footer-copyright">
           &copy; {new Date().getFullYear()} Reign Jiu Jitsu. All rights reserved.
