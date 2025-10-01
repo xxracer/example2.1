@@ -44,3 +44,19 @@
   font-size: 14px;
   color: var(--text-medium-gray);
 }
+
+@media (max-width: 768px) {
+  .site-footer {
+    padding: 30px 15px;
+  }
+
+  .footer-links {
+    gap: 15px 25px; /* Smaller gap for mobile */
+  }
+
+  .footer-links a,
+  .footer-copyright,
+  .footer-seo-text p {
+    font-size: 13px;
+  }
+}

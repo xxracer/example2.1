@@ -113,3 +113,32 @@
 .scrolled .benefit-item h3 {
     color: var(--background-primary);
 }
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+  .program-hero {
+    padding: 60px 20px;
+  }
+
+  .program-hero-title {
+    font-size: 42px;
+  }
+
+  .program-intro {
+    margin: 40px auto;
+  }
+
+  .program-intro p {
+    font-size: 16px;
+  }
+
+  .program-details-section {
+    flex-direction: column;
+    margin: 40px auto;
+    gap: 30px;
+  }
+
+  .program-details-text h2 {
+    font-size: 24px;
+  }
+}

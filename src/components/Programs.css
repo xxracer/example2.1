@@ -54,3 +54,18 @@
   color: #dddddd;
   line-height: 1.6;
 }
+
+@media (max-width: 768px) {
+  .programs-section {
+    padding: 60px 15px;
+  }
+  .programs-grid {
+    gap: 25px;
+  }
+  .program-title {
+    font-size: 20px;
+  }
+  .program-description {
+    font-size: 15px;
+  }
+}

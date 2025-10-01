@@ -1,0 +1,12 @@
+
+> reign-bjj2@0.1.0 dev
+> concurrently "npm run start" "npm run server"
+
+[1]
+[1] > reign-bjj2@0.1.0 server
+[1] > node backend/server.js
+[1]
+[0]
+[0] > reign-bjj2@0.1.0 start
+[0] > react-scripts start
+[0]

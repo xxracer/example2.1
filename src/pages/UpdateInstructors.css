@@ -62,82 +62,92 @@
 
 .instructors-list-container {
   margin-top: 40px;
-}
-
-.instructors-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 25px; /* Increased gap */
-}
-
-.instructor-card {
-  background-color: white;
-  border-radius: 12px; /* Softer corners */
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-  text-align: center;
   padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.instructors-list {
   display: flex;
   flex-direction: column;
+  gap: 10px;
+}
+
+.instructor-list-item {
+  display: flex;
   align-items: center;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  padding: 10px 15px;
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  transition: background-color 0.2s ease;
 }
 
-.instructor-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+.instructor-list-item:hover {
+  background-color: #fdfdfd;
 }
 
-.instructor-image {
-  width: 100px; /* smaller */
-  height: 100px;
+.instructor-list-image {
+  width: 50px;
+  height: 50px;
   object-fit: cover;
   border-radius: 50%;
-  margin-bottom: 15px;
-  border: 3px solid #f0f0f0; /* Add a border to the image */
+  margin-right: 15px;
 }
 
-.instructor-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-
-.instructor-info h3 {
-  margin: 0 0 10px 0;
-  font-family: var(--font-heading-secondary);
-  font-size: 1.1rem; /* Slightly smaller */
+.instructor-list-name {
+  font-weight: 600;
   color: #333;
+  flex-grow: 1; /* Pushes actions to the end */
 }
 
-.instructor-actions {
+.instructor-list-actions {
   display: flex;
   gap: 10px;
-  width: 100%;
-  justify-content: center;
 }
 
-.instructor-actions button {
-  padding: 6px 12px; /* smaller buttons */
+.instructor-list-actions button {
+  padding: 6px 12px;
   border: 1px solid #ddd;
-  border-radius: 20px; /* pill-shaped buttons */
+  border-radius: 20px;
   cursor: pointer;
   background-color: #f8f8f8;
   font-size: 13px;
   transition: background-color 0.2s, color 0.2s;
 }
 
-.instructor-actions button:hover {
-    background-color: #e9e9e9;
+.instructor-list-actions button:hover {
+  background-color: #e9e9e9;
 }
 
-.instructor-actions .delete-btn {
+.instructor-list-actions .delete-btn {
   background-color: #fff1f1;
   color: #c53030;
   border-color: #f7d4d4;
 }
 
-.instructor-actions .delete-btn:hover {
+.instructor-list-actions .delete-btn:hover {
   background-color: #fed7d7;
   color: #9b2c2c;
+}
+
+@media (max-width: 768px) {
+  .admin-container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .instructor-list-item {
+    flex-wrap: wrap;
+    padding: 15px;
+  }
+  .instructor-list-name {
+    width: 100%;
+    margin-top: 10px;
+    text-align: center;
+  }
+  .instructor-list-actions {
+    width: 100%;
+    justify-content: center;
+    margin-top: 10px;
+  }
 }

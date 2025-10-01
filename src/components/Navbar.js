@@ -5,33 +5,56 @@ import './Navbar.css';
 const Navbar = () => {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
   const isAdminPage = location.pathname === '/update-instructors';
 
-  const handleDropdownClick = (dropdownName) => {
+  const handleDropdownClick = (e, dropdownName) => {
+    e.preventDefault();
     setOpenDropdown(openDropdown === dropdownName ? null : dropdownName);
   };
+
+  const handleMobileMenuToggle = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
+  useEffect(() => {
+    closeMobileMenu();
+    setOpenDropdown(null);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+    return () => {
+      document.body.classList.remove('no-scroll');
+    };
+  }, [isMobileMenuOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
       const welcomeSection = document.getElementById('welcome-section');
       if (welcomeSection) {
         const { top } = welcomeSection.getBoundingClientRect();
-        // Change background when the top of the welcome section is near the top of the viewport
         setIsScrolled(top <= 80);
       } else {
-        // Fallback for other pages
         setIsScrolled(window.scrollY > 80);
       }
     };
 
     if (!isAdminPage) {
       window.addEventListener('scroll', handleScroll);
-      // Initial check
       handleScroll();
     } else {
-      setIsScrolled(false); // Ensure no scroll effect on admin page
+      setIsScrolled(false);
     }
 
     return () => {
@@ -42,39 +65,42 @@ const Navbar = () => {
   const navClasses = [
     'main-navbar',
     isAdminPage ? 'navbar-admin' : '',
-    isScrolled && !isAdminPage ? 'navbar-scrolled' : ''
+    isScrolled && !isAdminPage ? 'navbar-scrolled' : '',
+    isMobileMenuOpen ? 'mobile-menu-active' : ''
   ].filter(Boolean).join(' ');
+
+  const linksClasses = `navbar-links ${isMobileMenuOpen ? 'mobile-open' : ''}`;
 
   return (
     <nav className={navClasses}>
       <div className="navbar-left">
-        <ul className="navbar-links">
+        <ul className={linksClasses}>
           <li className="dropdown">
-            <a href="#programs" onClick={() => handleDropdownClick('programs')}>Programs</a>
+            <a href="#programs" onClick={(e) => handleDropdownClick(e, 'programs')}>Programs</a>
             <ul className={`dropdown-menu ${openDropdown === 'programs' ? 'open' : ''}`}>
-              <li><Link to="/kids-program">Kids Program</Link></li>
-              <li><Link to="/homeschool-program">Homeschool Program</Link></li>
-              <li><Link to="/adult-program">Adult Program</Link></li>
-              <li><Link to="/fundamentals-program">Fundamentals Program</Link></li>
-              <li><Link to="/competition-training">Competition Training</Link></li>
-              <li><Link to="/private-lessons">Private Lessons</Link></li>
+              <li><Link to="/kids-program" onClick={closeMobileMenu}>Kids Program</Link></li>
+              <li><Link to="/homeschool-program" onClick={closeMobileMenu}>Homeschool Program</Link></li>
+              <li><Link to="/adult-program" onClick={closeMobileMenu}>Adult Program</Link></li>
+              <li><Link to="/fundamentals-program" onClick={closeMobileMenu}>Fundamentals Program</Link></li>
+              <li><Link to="/competition-training" onClick={closeMobileMenu}>Competition Training</Link></li>
+              <li><Link to="/private-lessons" onClick={closeMobileMenu}>Private Lessons</Link></li>
             </ul>
           </li>
           <li className="dropdown">
-            <a href="#schedule" onClick={() => handleDropdownClick('schedule')}>Schedule</a>
+            <a href="#schedule" onClick={(e) => handleDropdownClick(e, 'schedule')}>Schedule</a>
             <ul className={`dropdown-menu ${openDropdown === 'schedule' ? 'open' : ''}`}>
-              <li><Link to="/instructors">Instructors</Link></li>
-              <li><Link to="/facility">Our Facility</Link></li>
+              <li><Link to="/instructors" onClick={closeMobileMenu}>Instructors</Link></li>
+              <li><Link to="/facility" onClick={closeMobileMenu}>Our Facility</Link></li>
             </ul>
           </li>
           <li className="dropdown">
-            <a href="#more" onClick={() => handleDropdownClick('more')}>More</a>
+            <a href="#more" onClick={(e) => handleDropdownClick(e, 'more')}>More</a>
             <ul className={`dropdown-menu ${openDropdown === 'more' ? 'open' : ''}`}>
-              <li><Link to="/affiliate-schools">Affiliate Schools</Link></li>
-              <li><Link to="/contact">Contact Us</Link></li>
-              <li><Link to="/about">About / Our Method</Link></li>
-              <li><Link to="/blog">Blog</Link></li>
-              <li><Link to="/faq">FAQ</Link></li>
+              <li><Link to="/affiliate-schools" onClick={closeMobileMenu}>Affiliate Schools</Link></li>
+              <li><Link to="/contact" onClick={closeMobileMenu}>Contact Us</Link></li>
+              <li><Link to="/about" onClick={closeMobileMenu}>About / Our Method</Link></li>
+              <li><Link to="/blog" onClick={closeMobileMenu}>Blog</Link></li>
+              <li><Link to="/faq" onClick={closeMobileMenu}>FAQ</Link></li>
             </ul>
           </li>
         </ul>
@@ -82,7 +108,13 @@ const Navbar = () => {
       <div className="navbar-logo">
         <Link to="/">REIGN BJJ</Link>
       </div>
-      <div className="navbar-right"></div>
+      <div className="navbar-right">
+        <button className={`mobile-menu-toggle ${isMobileMenuOpen ? 'open' : ''}`} onClick={handleMobileMenuToggle} aria-label="Toggle menu">
+          <span />
+          <span />
+          <span />
+        </button>
+      </div>
     </nav>
   );
 };
