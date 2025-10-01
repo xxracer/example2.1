@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './UpdateInstructors.css';
 
-const API_URL = process.env.REACT_APP_API_URL || '/api/instructors';
+const API_URL = `${process.env.REACT_APP_API_URL}/api/instructors`;
 
 const UpdateInstructors = () => {
   const [instructors, setInstructors] = useState([]);
@@ -97,21 +97,22 @@ const UpdateInstructors = () => {
         </form>
       </div>
 
-      <div className="instructors-list">
+      <div className="instructors-list-container">
         <h2>Current Instructors</h2>
-        {instructors.map(instructor => (
-          <div key={instructor.id} className="instructor-card">
-            <img src={instructor.image} alt={instructor.name} className="instructor-image" />
-            <div className="instructor-info">
-              <h3>{instructor.name}</h3>
-              <p>{instructor.bio}</p>
-              <div className="instructor-actions">
-                <button onClick={() => handleEdit(instructor)}>Edit</button>
-                <button onClick={() => handleDelete(instructor.id)} className="delete-btn">Delete</button>
+        <div className="instructors-grid">
+          {instructors.map(instructor => (
+            <div key={instructor.id} className="instructor-card">
+              <img src={instructor.image} alt={instructor.name} className="instructor-image" />
+              <div className="instructor-info">
+                <h3>{instructor.name}</h3>
+                <div className="instructor-actions">
+                  <button onClick={() => handleEdit(instructor)}>Edit</button>
+                  <button onClick={() => handleDelete(instructor.id)} className="delete-btn">Delete</button>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

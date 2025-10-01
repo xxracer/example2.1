@@ -1,6 +1,6 @@
 import React from 'react';
 import './HeroSection.css';
-import CircularText from './CircularText'; // Import the new component
+import CircularText from './CircularText'; // Import the new circular text component
 
 const HeroSection = () => {
   return (
