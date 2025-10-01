@@ -13,7 +13,7 @@ const WelcomeSection = () => {
           <div className="brush-separator"></div>
         </div>
         <div className="welcome-image-wrapper">
-          <img src="https://placehold.co/1200x450?text=Group+photo+of+students" alt="Group photo of mixed-age students" />
+          <img src="https://placehold.co/1200x450?text=Group+photo+of+students" alt="Group of mixed-age students on the mats" />
         </div>
       </div>
     </section>

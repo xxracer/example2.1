@@ -16,7 +16,7 @@ const InstagramFeed = () => {
       <h2 className="section-title">Latest on Instagram</h2>
       <div className="instagram-grid">
         {instagramPosts.map(post => (
-          <a key={post.id} href="#" target="_blank" rel="noopener noreferrer" className="instagram-post-link">
+          <a key={post.id} href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" className="instagram-post-link">
             <img src={post.img} alt={`Instagram post ${post.id}`} />
           </a>
         ))}
