@@ -1,46 +1,62 @@
 /* src/components/CircularText.css */
-.circular-text-wrapper {
+
+.circular-text-container {
+  width: 300px;
+  height: 300px;
+  position: relative;
+  margin: 40px auto 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 250px; /* Diameter of the circle */
-  height: 250px;
-  position: relative;
-  margin: 40px auto; /* Increased margin for spacing */
-}
-
-.circular-text-container {
-  width: 100%;
-  height: 100%;
-  animation: rotate-circle 30s linear infinite; /* Slower, smoother rotation */
-}
-
-@keyframes rotate-circle {
-  from {
-    transform: rotate(360deg);
-  }
-  to {
-    transform: rotate(0deg);
-  }
 }
 
 .circular-text {
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: relative;
   border-radius: 50%;
+  animation: rotate 30s linear infinite;
 }
 
-.circular-text span {
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.circular-text-char {
   position: absolute;
   top: 0;
   left: 50%;
-  height: 50%; /* Position letters on the circumference */
+  height: 150px; /* This is the radius */
   transform-origin: bottom center;
-  display: block;
-  font-size: 16px;
+  margin-left: -10px; /* Half of width to center */
+  width: 20px;
+  text-align: center;
+
+  font-family: var(--font-heading-secondary);
+  font-size: 18px;
   font-weight: 600;
-  color: var(--text-charcoal); /* Black text as requested */
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  color: #FFFFFF;
+  text-shadow:
+    -1px -1px 0 #000,
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .circular-text-container {
+    transform: scale(0.8);
+  }
+}
+
+@media (max-width: 480px) {
+  .circular-text-container {
+    transform: scale(0.7);
+  }
 }

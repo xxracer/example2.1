@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import FAQ from '../components/FAQ';
 
-const API_URL = `${process.env.REACT_APP_API_URL}/api/instructors`;
+const API_URL = '/api/instructors';
 
 const Instructors = () => {
   const [instructors, setInstructors] = useState([]);
