@@ -12,75 +12,73 @@
   padding: 20px 40px;
   z-index: 1000;
   background-color: transparent; /* Default is transparent */
-  transition: background-color 0.4s ease, color 0.4s ease;
+  transition: background-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
 }
 
-.navbar-logo a {
+.main-navbar .navbar-logo a,
+.main-navbar .navbar-links > li > a {
   color: var(--background-primary); /* White text for over the video */
-  text-decoration: none;
-  transition: color 0.3s ease, text-shadow 0.3s ease;
   text-shadow: 0 0 8px rgba(0, 0, 0, 0.8); /* Dark shadow for high contrast */
+  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
-.navbar-links > li > a {
+.main-navbar .navbar-links > li > a {
   font-family: var(--font-heading-secondary);
   font-size: 16px;
   font-weight: 600;
   text-decoration: none;
-  color: var(--background-primary); /* White text for over the video */
-  transition: color 0.3s ease, text-shadow 0.3s ease;
   padding-bottom: 5px;
   cursor: pointer;
-  text-shadow: 0 0 8px rgba(0, 0, 0, 0.8); /* Dark shadow for high contrast */
 }
 
 /* --- Scrolled State (Black Navbar) --- */
-.scrolled .main-navbar {
+.main-navbar.navbar-scrolled {
   background-color: var(--text-charcoal);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.scrolled .navbar-links a,
-.scrolled .navbar-logo a {
+.main-navbar.navbar-scrolled .navbar-links a,
+.main-navbar.navbar-scrolled .navbar-logo a {
   color: var(--background-primary);
   text-shadow: none; /* Remove shadow on solid background */
 }
 
-.scrolled .dropdown-menu {
+.main-navbar.navbar-scrolled .dropdown-menu {
   background-color: var(--text-charcoal);
   box-shadow: 0 8px 16px rgba(0,0,0,0.3);
 }
 
-.scrolled .dropdown-menu a {
+.main-navbar.navbar-scrolled .dropdown-menu a {
   color: var(--background-primary);
 }
 
-.scrolled .dropdown-menu a:hover {
+.main-navbar.navbar-scrolled .dropdown-menu a:hover {
   background-color: #333;
 }
 
-/* --- Scrolled Past State (White Navbar) --- */
-.scrolled-past .main-navbar {
-  background-color: var(--background-primary);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Add a subtle shadow */
+/* --- Admin Page State (Static White Navbar) --- */
+.main-navbar.navbar-admin {
+  background-color: var(--background-primary) !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-.scrolled-past .navbar-links a,
-.scrolled-past .navbar-logo a {
-  color: var(--text-charcoal);
-  text-shadow: none; /* Remove shadow on solid background */
+.main-navbar.navbar-admin .navbar-links a,
+.main-navbar.navbar-admin .navbar-logo a {
+  color: var(--text-charcoal) !important;
+  text-shadow: none !important;
 }
 
-.scrolled-past .dropdown-menu {
-  background-color: var(--background-primary);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+.main-navbar.navbar-admin .dropdown-menu {
+  background-color: var(--background-primary) !important;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1) !important;
 }
 
-.scrolled-past .dropdown-menu a {
-  color: var(--text-charcoal);
+.main-navbar.navbar-admin .dropdown-menu a {
+  color: var(--text-charcoal) !important;
 }
 
-.scrolled-past .dropdown-menu a:hover {
-  background-color: #f1f1f1;
+.main-navbar.navbar-admin .dropdown-menu a:hover {
+  background-color: #f1f1f1 !important;
 }
 
 
@@ -124,8 +122,9 @@
   display: none;
   position: absolute;
   top: 100%;
-  left: 0; /* Align with the parent item */
-  background-color: var(--background-primary);
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent for default state */
+  backdrop-filter: blur(5px);
   box-shadow: 0 8px 16px rgba(0,0,0,0.1);
   list-style: none;
   padding: 10px 0;
@@ -133,6 +132,7 @@
   border-radius: 4px;
   min-width: 220px;
   z-index: 1001;
+  transition: background-color 0.4s ease;
 }
 
 .dropdown-menu.open {
@@ -148,6 +148,7 @@
   padding: 12px 20px;
   font-size: 15px;
   white-space: nowrap;
+  color: var(--text-charcoal); /* Default text color for dropdown */
 }
 
 .dropdown-menu a:hover {

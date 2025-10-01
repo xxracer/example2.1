@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import FAQ from '../components/FAQ';
 
-const API_URL = process.env.REACT_APP_API_URL || '/api/instructors';
+const API_URL = `${process.env.REACT_APP_API_URL}/api/instructors`;
 
 const Instructors = () => {
   const [instructors, setInstructors] = useState([]);
@@ -44,19 +44,29 @@ const Instructors = () => {
       </script>
       <h1 style={{ textAlign: 'center', marginBottom: '40px' }}>Meet Our World-Class Instructors</h1>
 
-      {instructors.map(instructor => (
-        <div key={instructor.id} style={{ display: 'flex', gap: '30px', alignItems: 'center', marginBottom: '50px', flexWrap: 'wrap' }}>
+      {instructors.map((instructor, index) => {
+        const image = (
           <img
             src={instructor.image}
             alt={instructor.name}
             style={{ width: '100%', maxWidth: '300px', height: 'auto', borderRadius: '8px', flexShrink: 0 }}
           />
+        );
+        const text = (
           <div style={{ flex: 1, minWidth: '300px' }}>
             <h2 style={{ marginTop: 0 }}>{instructor.name}</h2>
             <p style={{ lineHeight: '1.7' }}>{instructor.bio}</p>
           </div>
-        </div>
-      ))}
+        );
+
+        // Alternate layout based on index
+        return (
+          <div key={instructor.id} style={{ display: 'flex', gap: '30px', alignItems: 'center', marginBottom: '50px', flexWrap: 'wrap', flexDirection: index % 2 === 0 ? 'row' : 'row-reverse' }}>
+            {image}
+            {text}
+          </div>
+        );
+      })}
 
       <FAQ faqData={pageFaqs} title="Instructor FAQs" />
     </div>
