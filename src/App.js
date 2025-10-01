@@ -69,7 +69,7 @@ const AppLayout = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [location.pathname]); // Re-run effect when the page route changes
+  }, [location.pathname, appClassName]); // Re-run effect when the page route changes or appClassName is updated
 
   return (
     <div className={`App ${appClassName}`}>

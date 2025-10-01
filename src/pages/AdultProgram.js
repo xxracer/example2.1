@@ -61,7 +61,7 @@ const AdultProgram = () => {
       </section>
 
       <div style={{'textAlign':'center', 'marginBottom': '60px'}}>
-        <img src="https://placehold.co/600x400?text=Group+Adult+Photo" alt="Group adult photo" />
+        <img src="https://placehold.co/600x400?text=Group+Adult+Photo" alt="Group of adult students after a jiu jitsu class" />
       </div>
 
       <FAQ faqData={pageFaqs} title="Adult Program FAQs" />
