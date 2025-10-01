@@ -3,22 +3,16 @@
   "builds": [
     {
       "src": "backend/server.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": { "buildCommand": "npm run build" }
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": ["../build/**"]
+      }
     }
   ],
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "/backend/server.js"
-    },
-    {
       "source": "/(.*)",
-      "destination": "/index.html"
+      "destination": "/backend/server.js"
     }
   ]
 }
