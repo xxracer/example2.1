@@ -33,7 +33,7 @@
 
 /* --- Scrolled State --- */
 .main-navbar.navbar-scrolled {
-  background-color: var(--text-charcoal);
+  background-color: #8f8d8d;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
@@ -44,7 +44,7 @@
 }
 
 .main-navbar.navbar-scrolled .dropdown-menu {
-  background-color: var(--text-charcoal);
+  background-color: #8f8d8d;
 }
 
 .main-navbar.navbar-scrolled .dropdown-menu a {
