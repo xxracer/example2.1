@@ -24,55 +24,10 @@ import BlogPage from './pages/BlogPage';
 import FAQPage from './pages/FAQPage';
 import UpdateInstructors from './pages/UpdateInstructors';
 
-// This new component handles the layout and scroll effects based on the current route
+// This new component handles the layout
 const AppLayout = () => {
-  const [appClassName, setAppClassName] = useState('');
-  const location = useLocation();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const welcomeSection = document.getElementById('welcome-section');
-      let newClassName = '';
-
-      if (welcomeSection) {
-        const rect = welcomeSection.getBoundingClientRect();
-        const navbarHeight = 80; // Approximate height of the navbar
-        const topPassed = rect.top <= navbarHeight;
-        const bottomPassed = rect.bottom <= navbarHeight;
-
-        if (topPassed && !bottomPassed) {
-          newClassName = 'scrolled'; // Black navbar
-        } else if (bottomPassed) {
-          newClassName = 'scrolled-past'; // White navbar
-        }
-      } else {
-        // Fallback for pages without a welcome section (makes navbar white on scroll)
-        newClassName = window.scrollY > 50 ? 'scrolled-past' : '';
-      }
-
-      if (newClassName !== appClassName) {
-        setAppClassName(newClassName);
-      }
-    };
-
-    if (location.pathname === '/update-instructors') {
-      // Force white navbar on admin page and disable scroll listener
-      setAppClassName('scrolled-past');
-      window.removeEventListener('scroll', handleScroll);
-    } else {
-      // Add scroll listener for all other pages
-      window.addEventListener('scroll', handleScroll, { passive: true });
-      // Set initial state
-      handleScroll();
-    }
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [location.pathname, appClassName]); // Re-run effect when the page route changes or appClassName is updated
-
   return (
-    <div className={`App ${appClassName}`}>
+    <div className="App">
       <Navbar />
       <main>
         <Routes>
