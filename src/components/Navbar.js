@@ -39,23 +39,27 @@ const Navbar = () => {
     };
   }, [isMobileMenuOpen]);
 
+  // Handle navbar background change on scroll
   useEffect(() => {
+    if (isAdminPage) {
+      setIsScrolled(false); // Ensure no scroll effect on admin page
+      return;
+    }
+
     const handleScroll = () => {
       const welcomeSection = document.getElementById('welcome-section');
       if (welcomeSection) {
-        const { top } = welcomeSection.getBoundingClientRect();
-        setIsScrolled(top <= 80);
+        // On homepage, change color when scrolling to the welcome section
+        const rect = welcomeSection.getBoundingClientRect();
+        setIsScrolled(rect.top <= 80); // 80 is approx navbar height
       } else {
-        setIsScrolled(window.scrollY > 80);
+        // On all other pages, the navbar is solid from the start
+        setIsScrolled(true);
       }
     };
 
-    if (!isAdminPage) {
-      window.addEventListener('scroll', handleScroll);
-      handleScroll();
-    } else {
-      setIsScrolled(false);
-    }
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Check on initial render
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
