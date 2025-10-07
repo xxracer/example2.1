@@ -5,14 +5,17 @@
       "src": "backend/server.js",
       "use": "@vercel/node",
       "config": {
-        "includeFiles": ["../build/**"]
+        "includeFiles": [
+          "../build/**",
+          "./instructors.json"
+        ]
       }
     }
   ],
-  "rewrites": [
+  "routes": [
     {
-      "source": "/(.*)",
-      "destination": "/backend/server.js"
+      "src": "/(.*)",
+      "dest": "backend/server.js"
     }
   ]
 }
