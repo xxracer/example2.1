@@ -3,23 +3,22 @@
   "builds": [
     {
       "src": "backend/server.js",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": [
-          "../build/**",
-          "backend/instructors.json"
-        ]
-      }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/.*",
-      "dest": "backend/server.js"
+      "use": "@vercel/node"
     },
     {
-      "src": "/(.*)",
-      "dest": "backend/server.js"
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "build" }
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "backend/server.js"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }

@@ -5,11 +5,8 @@ const fs = require('fs');
 const path = require('path');
 
 const app = express();
-const PORT = process.env.PORT || 3001;
 
 // --- Vercel Deployment Fix ---
-// Vercel has a read-only filesystem, except for the /tmp directory.
-// We use a different DB path for local development vs. production on Vercel.
 const IS_VERCEL = process.env.VERCEL === '1';
 const LOCAL_DB_PATH = path.join(__dirname, 'instructors.json');
 const VERCEL_TMP_DB_PATH = '/tmp/instructors.json';
@@ -21,23 +18,17 @@ app.use(bodyParser.json());
 
 // Helper function to read the database
 const readDB = () => {
-  // On Vercel, if the /tmp file doesn't exist, we need to create it.
-  // We'll copy the initial data from our bundled JSON file to the writable /tmp directory.
   if (IS_VERCEL && !fs.existsSync(DB_PATH)) {
     if (fs.existsSync(LOCAL_DB_PATH)) {
       const initialData = fs.readFileSync(LOCAL_DB_PATH, 'utf8');
       fs.writeFileSync(DB_PATH, initialData, 'utf8');
     } else {
-      // If for some reason the local file doesn't exist, start with an empty DB.
       fs.writeFileSync(DB_PATH, JSON.stringify([]), 'utf8');
     }
   }
-
-  // Fallback for local development if the file doesn't exist.
   if (!fs.existsSync(DB_PATH)) {
     return [];
   }
-
   const data = fs.readFileSync(DB_PATH, 'utf8');
   return JSON.parse(data);
 };
@@ -89,14 +80,14 @@ app.delete('/api/instructors/:id', (req, res) => {
   res.status(204).send();
 });
 
-// Serve the static files from the React app
-app.use(express.static(path.join(__dirname, '..', 'build')));
+// For local development, we still need to listen on a port.
+// Vercel will handle the routing and listening in production.
+if (!IS_VERCEL) {
+  const PORT = process.env.PORT || 3001;
+  app.listen(PORT, () => {
+    console.log(`Server is running for local development on http://localhost:${PORT}`);
+  });
+}
 
-// Handles any requests that don't match the ones above
-app.get('*', (req,res) =>{
-    res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
-});
-
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
+// Export the app for Vercel's serverless environment
+module.exports = app;
