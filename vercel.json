@@ -3,7 +3,10 @@
   "builds": [
     {
       "src": "backend/server.js",
-      "use": "@vercel/node"
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": ["backend/instructors.json"]
+      }
     },
     {
       "src": "package.json",
@@ -14,7 +17,7 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "backend/server.js"
+      "destination": "/backend/server.js"
     },
     {
       "source": "/(.*)",
