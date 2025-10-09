@@ -48,3 +48,15 @@
   filter: grayscale(100%);
   border-radius: 8px; /* A subtle touch */
 }
+
+@media (max-width: 768px) {
+  .welcome-section {
+    padding: 60px 15px;
+  }
+  .welcome-title {
+    font-size: 28px;
+  }
+  .welcome-seo-text {
+    font-size: 16px;
+  }
+}

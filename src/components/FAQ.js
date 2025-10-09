@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './FAQ.css';
 
-const faqData = [
+const defaultFaqData = [
   {
     question: "What is Brazilian Jiu Jitsu?",
     answer: "Brazilian Jiu Jitsu (BJJ) is a martial art and combat sport based on grappling, ground fighting, and submission holds. It focuses on the skill of taking an opponent to the ground, controlling them, and using techniques to force them into submission."
@@ -33,10 +33,12 @@ const FAQItem = ({ faq, index, toggleFAQ }) => {
   );
 };
 
-const FAQ = () => {
-  const [faqs, setFaqs] = useState(
-    faqData.map(item => ({ ...item, open: false }))
-  );
+const FAQ = ({ faqData = defaultFaqData, title = "Frequently Asked Questions" }) => {
+  const [faqs, setFaqs] = useState([]);
+
+  useEffect(() => {
+    setFaqs(faqData.map(item => ({ ...item, open: false })));
+  }, [faqData]);
 
   const toggleFAQ = index => {
     setFaqs(
@@ -53,7 +55,7 @@ const FAQ = () => {
 
   return (
     <section id="faq" className="faq-section">
-      <h2 className="section-title">Frequently Asked Questions</h2>
+      <h2 className="section-title">{title}</h2>
       <div className="faq-container">
         {faqs.map((faq, index) => (
           <FAQItem

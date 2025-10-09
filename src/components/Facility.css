@@ -44,3 +44,21 @@
   display: block;
   filter: grayscale(100%);
 }
+
+@media (max-width: 768px) {
+  .facility-section {
+    padding: 60px 15px;
+  }
+  .facility-description {
+    font-size: 15px;
+    margin-bottom: 40px;
+  }
+  .facility-image-grid {
+    gap: 20px;
+  }
+  .facility-image-item {
+    width: 100%;
+    max-width: 350px; /* Limit max width on mobile */
+    height: 200px;
+  }
+}

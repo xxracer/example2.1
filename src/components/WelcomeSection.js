@@ -3,21 +3,17 @@ import './WelcomeSection.css';
 
 const WelcomeSection = () => {
   return (
-    <section className="welcome-section">
+    <section id="welcome-section" className="welcome-section">
       <div className="welcome-container">
         <div className="welcome-text-content">
-          <h2 className="welcome-title">Welcome to Reign Jiu Jitsu – Katy, TX</h2>
+          <h2 className="welcome-title">Building Champions On and Off the Mats</h2>
           <p className="welcome-seo-text">
-            Reign Jiu Jitsu is a premier family-friendly martial arts academy located in Katy, Texas.
-            Our mission is to provide expert Brazilian Jiu Jitsu training that promotes discipline,
-            confidence, and physical fitness. Whether you’re a beginner or a competitor, we challenge
-            and encourage each student to reach their full potential through a supportive community
-            environment. Join us for our introductory class and begin your transformative Jiu Jitsu journey today!
+            At Reign Jiu Jitsu, we believe in building champions on and off the mats. Our mission is to provide world-class training in Jiu Jitsu in Katy, TX, creating an environment where students of all ages can thrive. Whether you’re searching for Jiu Jitsu near me for adults, kids Jiu Jitsu near me, or family martial arts, Reign Jiu Jitsu is your destination.
           </p>
           <div className="brush-separator"></div>
         </div>
         <div className="welcome-image-wrapper">
-          <img src="https://placehold.co/1200x450?text=Welcome+Image" alt="Family training at Reign Jiu Jitsu" />
+          <img src="https://placehold.co/1200x450?text=Group+photo+of+students" alt="Group of mixed-age students on the mats" />
         </div>
       </div>
     </section>

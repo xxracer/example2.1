@@ -1,46 +1,70 @@
 import React from 'react';
+import './ProgramPage.css';
+import FAQ from '../components/FAQ';
 
 const AdultProgram = () => {
+  const pageFaqs = [
+    {
+      question: "Does the training cover self-defense techniques?",
+      answer: "Jiu Jitsu is an inherently effective self-defense system. Our curriculum incorporates techniques for real-life situations, focusing on controlling an opponent regardless of size or strength."
+    },
+    {
+      question: "Do I need any previous martial arts experience to join the Adult Program?",
+      answer: "No. We welcome complete beginners and recommend starting with our Fundamentals Program to build a solid, safe foundation before moving to the main Adult classes."
+    }
+  ];
+
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Is BJJ a good workout for weight loss and muscle gain?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, BJJ is an effective fitness program that promotes sustainable weight loss and lean muscle gain while offering superior mental benefits like stress reduction and improved sleep."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Are there morning, noon, or evening classes available?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "We schedule classes to fit various adult routines, including morning BJJ classes, noon classes for lunch breaks, and evening classes after work, offering great flexibility."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do I need any previous martial arts experience to join the Adult Program?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. The program is structured to welcome complete beginners, guiding you safely through the fundamentals and ensuring you gain confidence before advancing."
-        }
+    "mainEntity": pageFaqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
       }
-    ]
+    }))
   };
 
   return (
-    <div style={{ padding: '100px 20px', textAlign: 'center' }}>
+    <div className="program-page">
       <script type="application/ld+json">
         {JSON.stringify(faqSchema)}
       </script>
-      <h1>Adult Jiu Jitsu Classes in Katy: Fitness, Self-Defense, and Stress Reduction</h1>
-      <p>
-        Brazilian Jiu Jitsu is more than a martial art—it's a combat sport, a self-defense system, and an effective fitness program. Join us at Reign Jiu Jitsu in Katy for: sustainable weight loss & lean muscle gain; improved confidence & boosted energy; and reduced stress for better sleep. Whether you're a complete beginner or an experienced practitioner coming from Lumberton or Nederland, our compassionate instructors will guide you to success.
-      </p>
+      <section className="program-hero" style={{ backgroundImage: "url('https://placehold.co/1920x1080?text=Adults+Sparring')" }}>
+        <h1 className="program-hero-title">Adult Program</h1>
+      </section>
+
+      <section className="program-intro">
+        <p>
+          Our Adult Jiu Jitsu program provides a supportive environment for beginners and advanced students alike. Whether your goal is self-defense, fitness, or personal growth, you’ll find the right path here. Classes include both gi and no-gi Jiu Jitsu in Katy, TX.
+        </p>
+      </section>
+
+      <section className="program-details-section">
+        <div className="program-details-text">
+          <h2>Self-Defense, Fitness, and Growth</h2>
+          <p>
+            Our classes are designed to help you achieve your goals, whether you're a beginner or an advanced student.
+          </p>
+          <ul>
+            <li>- Learn effective self-defense techniques</li>
+            <li>- Improve your fitness and overall health</li>
+            <li>- Experience personal growth in a supportive community</li>
+            <li>- Classes include both Gi and No-Gi training</li>
+          </ul>
+        </div>
+        <div className="program-details-image">
+          <img src="https://placehold.co/600x400?text=Adults+Drilling" alt="Adults drilling techniques" />
+        </div>
+      </section>
+
+      <div style={{'textAlign':'center', 'marginBottom': '60px'}}>
+        <img src="https://placehold.co/600x400?text=Group+Adult+Photo" alt="Group of adult students after a jiu jitsu class" />
+      </div>
+
+      <FAQ faqData={pageFaqs} title="Adult Program FAQs" />
     </div>
   );
 };

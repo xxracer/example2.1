@@ -1,38 +1,66 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import FAQ from '../components/FAQ';
+import './Instructors.css'; // Import the new CSS file
+
+const API_URL = '/api/instructors';
 
 const Instructors = () => {
+  const [instructors, setInstructors] = useState([]);
+
+  useEffect(() => {
+    fetch(API_URL)
+      .then(res => res.json())
+      .then(data => setInstructors(data))
+      .catch(err => console.error("Error fetching instructors:", err));
+  }, []);
+
+  const pageFaqs = [
+    {
+      question: "What are the primary competition achievements of the instructors?",
+      answer: "Our instructors are highly decorated competitors, with major titles including IBJJF World and Pan American championships."
+    },
+    {
+      question: "What belt ranks do the instructors hold?",
+      answer: "Our team is led by accomplished Black Belts, ensuring that students receive instruction at the highest level of technical knowledge and competitive experience."
+    }
+  ];
+
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What are the primary competition achievements of Head Instructor Pablo Silva?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Pablo Silva is a highly decorated competitor, with major titles including a 1st Place victory at the IBJJF World Championship (2010), and multiple IBJJF World Masters and Pan American championships."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is Pablo Silva's team affiliation?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "He is currently affiliated with the ZR Team, having previously represented Gracie Barra – Belo Horizonte."
-        }
+    "mainEntity": pageFaqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
       }
-    ]
+    }))
   };
 
   return (
-    <div style={{ padding: '100px 20px', textAlign: 'center' }}>
+    <div className="instructors-page">
       <script type="application/ld+json">
         {JSON.stringify(faqSchema)}
       </script>
-      <h1>Meet World Champion Pablo Silva: Black Belt Jiu Jitsu Instruction in Katy, Texas</h1>
-      <p>
-        Reign BJJ is led by Pablo Silva, a highly decorated Brazilian Jiu Jitsu Black Belt under Marcelo Azevedo and a former Gracie Barra representative, now with ZR Team. Pablo Silva reached the top of the competitive world by winning the IBJJF World Championship in 2010 and holds numerous prestigious titles, including multiple IBJJF World Masters, Pan, and Houston Open titles. Training under Pablo means receiving instruction rooted in verifiable, world-class expertise and competitive success.
-      </p>
+      <h1>Meet Our World-Class Instructors</h1>
+
+      {instructors.map((instructor, index) => (
+        <div key={instructor.id} className={`instructor-item ${index % 2 !== 0 ? 'reverse' : ''}`}>
+          <div className="instructor-image-wrapper">
+            <img
+              src={instructor.image}
+              alt={instructor.name}
+            />
+          </div>
+          <div className="instructor-bio">
+            <h2>{instructor.name}</h2>
+            <p>{instructor.bio}</p>
+          </div>
+        </div>
+      ))}
+
+      <FAQ faqData={pageFaqs} title="Instructor FAQs" />
     </div>
   );
 };

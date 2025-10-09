@@ -1,38 +1,66 @@
 import React from 'react';
+import './ProgramPage.css';
+import FAQ from '../components/FAQ';
 
 const PrivateLessons = () => {
+  const pageFaqs = [
+    {
+      question: "Can I share a Private Lesson with a friend?",
+      answer: "Yes, private lessons offer the flexibility to work with the coach on a one-on-one basis or in a small group environment, allowing you to train with a partner or small group."
+    },
+    {
+      question: "Are Private Lessons suitable for complete beginners?",
+      answer: "Absolutely. Beginners often find that private lessons help them build a solid foundation and confidence faster, making their subsequent transition into group classes more effective and enjoyable."
+    }
+  ];
+
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "How much do Private Lessons cost?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Private lessons are priced at $170 per session, offering an investment in accelerated, personalized learning with a world-class instructor."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Are Private Lessons suitable for complete beginners?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Absolutely. Beginners often find that private lessons help them build a solid foundation and confidence faster, making their subsequent transition into group classes more effective and enjoyable."
-        }
+    "mainEntity": pageFaqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
       }
-    ]
+    }))
   };
 
   return (
-    <div style={{ padding: '100px 20px', textAlign: 'center' }}>
+    <div className="program-page">
       <script type="application/ld+json">
         {JSON.stringify(faqSchema)}
       </script>
-      <h1>Private Jiu Jitsu Lessons in Katy: Accelerated Learning with World-Class Instruction</h1>
-      <p>
-        Private lessons give you the opportunity to work with the Coach on a one-on-one or in a small group environment. Our one-on-one approach gets you results quicker than group classes, whether you’re perfecting techniques, improving fitness, or mastering new moves. Private training is great for all ages; kids build confidence quickly, and adults gain a solid foundation, making group classes more effective. At just $170 per session, you’re investing in exceptional quality and accelerated growth.
-      </p>
+      <section className="program-hero" style={{ backgroundImage: "url('https://placehold.co/1920x1080?text=One-on-one+Lesson')" }}>
+        <h1 className="program-hero-title">Private Lessons</h1>
+      </section>
+
+      <section className="program-intro">
+        <p>
+          Accelerate your progress with Private BJJ lessons. Work directly with our instructors to focus on your goals, from self-defense to competition preparation. Many students find that private Jiu Jitsu classes near me give them the boost they need to succeed.
+        </p>
+      </section>
+
+      <section className="program-details-section">
+        <div className="program-details-text">
+          <h2>Focus on Your Goals</h2>
+          <p>
+            Private lessons are the fastest way to improve. Get personalized feedback and instruction tailored to your specific needs.
+          </p>
+          <ul>
+            <li>- Accelerate your progress</li>
+            <li>- Focus on your specific goals</li>
+            <li>- Ideal for self-defense or competition prep</li>
+            <li>- Get the boost you need to succeed</li>
+          </ul>
+        </div>
+        <div className="program-details-image">
+          <img src="https://placehold.co/600x400?text=Instructor+Coaching" alt="Instructor coaching a student" />
+        </div>
+      </section>
+
+      <FAQ faqData={pageFaqs} title="Private Lessons FAQs" />
     </div>
   );
 };

@@ -12,6 +12,13 @@
   text-align: center;
 }
 
+.footer-seo-text p {
+  font-size: 14px;
+  color: var(--text-medium-gray);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
 .footer-links {
   display: flex;
   justify-content: center;
@@ -36,4 +43,20 @@
 .footer-copyright {
   font-size: 14px;
   color: var(--text-medium-gray);
+}
+
+@media (max-width: 768px) {
+  .site-footer {
+    padding: 30px 15px;
+  }
+
+  .footer-links {
+    gap: 15px 25px; /* Smaller gap for mobile */
+  }
+
+  .footer-links a,
+  .footer-copyright,
+  .footer-seo-text p {
+    font-size: 13px;
+  }
 }

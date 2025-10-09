@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 
@@ -22,50 +22,45 @@ import ContactPage from './pages/ContactPage';
 import AboutPage from './pages/AboutPage';
 import BlogPage from './pages/BlogPage';
 import FAQPage from './pages/FAQPage';
+import UpdateInstructors from './pages/UpdateInstructors';
+
+import GoogleReviewsButton from './components/GoogleReviewsButton';
+
+// This new component handles the layout
+const AppLayout = () => {
+  return (
+    <div className="App">
+      <Navbar />
+      <main>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/kids-program" element={<KidsProgram />} />
+          <Route path="/homeschool-program" element={<HomeschoolProgram />} />
+          <Route path="/adult-program" element={<AdultProgram />} />
+          <Route path="/fundamentals-program" element={<FundamentalsProgram />} />
+          <Route path="/competition-training" element={<CompetitionTraining />} />
+          <Route path="/private-lessons" element={<PrivateLessons />} />
+          <Route path="/schedule" element={<Schedule />} />
+          <Route path="/instructors" element={<Instructors />} />
+          <Route path="/facility" element={<OurFacility />} />
+          <Route path="/affiliate-schools" element={<AffiliateSchools />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/faq" element={<FAQPage />} />
+          <Route path="/update-instructors" element={<UpdateInstructors />} />
+        </Routes>
+      </main>
+      <Footer />
+      <GoogleReviewsButton />
+    </div>
+  );
+};
 
 function App() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > 50;
-      if (isScrolled !== scrolled) {
-        setScrolled(isScrolled);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [scrolled]);
-
   return (
     <Router>
-      <div className={`App ${scrolled ? 'scrolled' : ''}`}>
-        <Navbar />
-        <main>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/kids-program" element={<KidsProgram />} />
-            <Route path="/homeschool-program" element={<HomeschoolProgram />} />
-            <Route path="/adult-program" element={<AdultProgram />} />
-            <Route path="/fundamentals-program" element={<FundamentalsProgram />} />
-            <Route path="/competition-training" element={<CompetitionTraining />} />
-            <Route path="/private-lessons" element={<PrivateLessons />} />
-            <Route path="/schedule" element={<Schedule />} />
-            <Route path="/instructors" element={<Instructors />} />
-            <Route path="/facility" element={<OurFacility />} />
-            <Route path="/affiliate-schools" element={<AffiliateSchools />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/blog" element={<BlogPage />} />
-            <Route path="/faq" element={<FAQPage />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
+      <AppLayout />
     </Router>
   );
 }

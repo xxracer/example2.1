@@ -17,17 +17,7 @@
 
 .contact-map-container {
   width: 400px;
-  height: 350px;
-}
-
-.contact-map-placeholder {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border: 1px solid #FFFFFF;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  filter: grayscale(100%);
-  opacity: 0.8;
+  height: 450px; /* Increased height to match form */
 }
 
 .contact-form-container {
@@ -78,4 +68,16 @@
 .submit-button:hover {
   background-color: var(--text-dark-gray);
   border-color: var(--text-dark-gray);
+}
+
+@media (max-width: 900px) {
+  .contact-us-container {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .contact-map-container,
+  .contact-form-container {
+    width: 100%;
+    max-width: 500px;
+  }
 }
