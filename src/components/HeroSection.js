@@ -1,25 +1,39 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './HeroSection.css';
 
 const HeroSection = () => {
   const [overlayOpacity, setOverlayOpacity] = useState(0.1);
+  const heroRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const maxScroll = 400; // The scroll distance over which the effect happens
-      const newOpacity = Math.min(0.7, 0.1 + (scrollY / maxScroll) * 0.6);
-      setOverlayOpacity(newOpacity);
+      if (heroRef.current) {
+        const scrollY = window.scrollY;
+        // The effect should complete over the full height of the hero section.
+        const heroHeight = heroRef.current.offsetHeight;
+        const startOpacity = 0.1; // Start with a very light tint
+        const endOpacity = 0.85; // End with a darker tint
+
+        // Calculate scroll progress (0 to 1) within the hero section
+        const scrollProgress = Math.min(scrollY / (heroHeight - window.innerHeight * 0.5), 1);
+
+        // Interpolate opacity based on scroll progress
+        const newOpacity = startOpacity + scrollProgress * (endOpacity - startOpacity);
+
+        setOverlayOpacity(newOpacity);
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Set initial state
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
   return (
-    <section className="hero-section">
+    <section ref={heroRef} className="hero-section">
       <div className="hero-video-wrapper">
         <video autoPlay loop muted playsInline className="hero-video-bg">
           <source src="/videos/reign.mp4" type="video/mp4" />
