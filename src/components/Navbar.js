@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { FaFacebook, FaInstagram } from 'react-icons/fa';
 import './Navbar.css';
 
 const Navbar = () => {
   const [openDropdown, setOpenDropdown] = useState(null);
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
-
-  const isAdminPage = location.pathname === '/update-instructors';
 
   const handleDropdownClick = (e, dropdownName) => {
     e.preventDefault();
@@ -23,11 +21,13 @@ const Navbar = () => {
     setIsMobileMenuOpen(false);
   };
 
+  // Close mobile menu on route change
   useEffect(() => {
     closeMobileMenu();
     setOpenDropdown(null);
   }, [location.pathname]);
 
+  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.classList.add('no-scroll');
@@ -39,40 +39,7 @@ const Navbar = () => {
     };
   }, [isMobileMenuOpen]);
 
-  // Handle navbar background change on scroll
-  useEffect(() => {
-    if (isAdminPage) {
-      setIsScrolled(false); // Ensure no scroll effect on admin page
-      return;
-    }
-
-    const handleScroll = () => {
-      const welcomeSection = document.getElementById('welcome-section');
-      if (welcomeSection) {
-        // On homepage, change color when scrolling to the welcome section
-        const rect = welcomeSection.getBoundingClientRect();
-        setIsScrolled(rect.top <= 80); // 80 is approx navbar height
-      } else {
-        // On all other pages, the navbar is solid from the start
-        setIsScrolled(true);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Check on initial render
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [location.pathname, isAdminPage]);
-
-  const navClasses = [
-    'main-navbar',
-    isAdminPage ? 'navbar-admin' : '',
-    isScrolled && !isAdminPage ? 'navbar-scrolled' : '',
-    isMobileMenuOpen ? 'mobile-menu-active' : ''
-  ].filter(Boolean).join(' ');
-
+  const navClasses = `main-navbar ${isMobileMenuOpen ? 'mobile-menu-active' : ''}`;
   const linksClasses = `navbar-links ${isMobileMenuOpen ? 'mobile-open' : ''}`;
 
   return (
@@ -113,6 +80,14 @@ const Navbar = () => {
         <Link to="/">REIGN BJJ</Link>
       </div>
       <div className="navbar-right">
+        <div className="social-icons">
+          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <FaFacebook />
+          </a>
+          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <FaInstagram />
+          </a>
+        </div>
         <button className={`mobile-menu-toggle ${isMobileMenuOpen ? 'open' : ''}`} onClick={handleMobileMenuToggle} aria-label="Toggle menu">
           <span />
           <span />
