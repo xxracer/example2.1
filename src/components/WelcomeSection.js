@@ -6,11 +6,22 @@ const WelcomeSection = () => {
     <section id="welcome-section" className="welcome-section">
       <div className="welcome-container">
         <div className="welcome-text-content">
-          <h2 className="welcome-title">Building Champions On and Off the Mats</h2>
           <p className="welcome-seo-text">
-            At Reign Jiu Jitsu, we believe in building champions on and off the mats. Our mission is to provide world-class training in Jiu Jitsu in Katy, TX, creating an environment where students of all ages can thrive. Whether you’re searching for Jiu Jitsu near me for adults, kids Jiu Jitsu near me, or family martial arts, Reign Jiu Jitsu is your destination.
+            Reign Jiu-Jitsu is home to multiple youth champions and one of the nation’s most respected teams. Whether you’re a beginner, competitor, or parent looking for a family-friendly program, our world-class facility combines elite training, a full gym, and a positive culture built to help you grow.
           </p>
-          <div className="brush-separator"></div>
+          <p className="welcome-seo-text">
+            From kids to adults, beginners to competitors, our students develop strength, discipline, and confidence through Brazilian Jiu-Jitsu. We’re home to multiple youth champions and one of the nation’s most respected competition teams, offering:
+          </p>
+          <ul className="welcome-list">
+            <li>✅ Competition Training for serious athletes</li>
+            <li>✅ Homeschool Jiu-Jitsu Program for growing minds and bodies</li>
+            <li>✅ Fundamentals for Beginners to build a solid foundation</li>
+            <li>✅ Adult Gi & No-Gi Classes in a motivating, inclusive environment</li>
+          </ul>
+          <p className="welcome-seo-text">
+            Scroll down to explore why Reign Jiu-Jitsu is recognized among the best in the World.
+          </p>
+          <button className="welcome-info-button">Get more info</button>
         </div>
         <div className="welcome-image-wrapper">
           <img src="https://placehold.co/1200x450?text=Group+photo+of+students" alt="Group of mixed-age students on the mats" />

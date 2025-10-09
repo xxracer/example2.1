@@ -15,29 +15,48 @@
   margin-bottom: 40px;
 }
 
-.welcome-title {
-  font-family: var(--font-heading-secondary);
-  font-size: 32px;
-  color: var(--text-charcoal);
-  margin-bottom: 20px;
-}
-
 .welcome-seo-text {
   font-family: var(--font-body);
   font-size: 18px;
   color: var(--text-dark-gray);
   line-height: 1.7;
   max-width: 800px;
-  margin: 0 auto 30px auto;
+  margin: 0 auto 20px auto; /* Adjusted margin */
 }
 
-.brush-separator {
-  height: 2px;
-  width: 100px;
-  background-color: var(--border-light-gray);
-  margin: 0 auto;
-  /* A real implementation might use an SVG or a background-image for a brush effect */
-  opacity: 0.6;
+.welcome-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px auto 30px;
+  text-align: left;
+  max-width: 600px;
+  display: inline-block;
+}
+
+.welcome-list li {
+  margin-bottom: 15px;
+  font-size: 16px;
+  color: var(--text-charcoal);
+}
+
+.welcome-info-button {
+  background-color: var(--text-charcoal);
+  color: var(--background-primary);
+  border: 2px solid var(--text-charcoal);
+  border-radius: 30px;
+  padding: 12px 30px;
+  font-family: var(--font-heading-secondary);
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: block;
+  margin: 30px auto 0;
+}
+
+.welcome-info-button:hover {
+  background-color: var(--text-dark-gray);
+  border-color: var(--text-dark-gray);
 }
 
 .welcome-image-wrapper img {
@@ -46,17 +65,17 @@
   height: auto;
   object-fit: cover;
   filter: grayscale(100%);
-  border-radius: 8px; /* A subtle touch */
+  border-radius: 8px;
 }
 
 @media (max-width: 768px) {
   .welcome-section {
     padding: 60px 15px;
   }
-  .welcome-title {
-    font-size: 28px;
-  }
-  .welcome-seo-text {
+  .welcome-seo-text, .welcome-list li {
     font-size: 16px;
+  }
+  .welcome-list {
+    text-align: center;
   }
 }
