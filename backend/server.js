@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
+const twilio = require('twilio');
 
 const app = express();
 
@@ -38,7 +39,9 @@ const writeDB = (data) => {
   fs.writeFileSync(DB_PATH, JSON.stringify(data, null, 2), 'utf8');
 };
 
-// API routes
+// --- API Routes ---
+
+// Instructors API
 app.get('/api/instructors', (req, res) => {
   const instructors = readDB();
   res.json(instructors);
@@ -80,8 +83,43 @@ app.delete('/api/instructors/:id', (req, res) => {
   res.status(204).send();
 });
 
+// Twilio Contact Form API
+app.post('/api/send-message', (req, res) => {
+  const { name, email, message } = req.body;
+
+  const {
+    TWILIO_ACCOUNT_SID,
+    TWILIO_AUTH_TOKEN,
+    TWILIO_FROM_NUMBER,
+    TWILIO_TO_NUMBER,
+  } = process.env;
+
+  if (!TWILIO_ACCOUNT_SID || !TWILIO_AUTH_TOKEN || !TWILIO_FROM_NUMBER || !TWILIO_TO_NUMBER) {
+    console.log('Twilio credentials not found. Skipping message send. Form data:', { name, email, message });
+    // Return a success response to not break the frontend flow
+    return res.status(200).json({ success: true, message: 'Form submitted (Twilio inactive).' });
+  }
+
+  const client = twilio(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
+  const body = `New Contact Form Submission:\n\nName: ${name}\nEmail: ${email}\n\nMessage: ${message}`;
+
+  client.messages
+    .create({
+      body: body,
+      from: TWILIO_FROM_NUMBER,
+      to: TWILIO_TO_NUMBER,
+    })
+    .then(message => {
+      console.log('Twilio message sent:', message.sid);
+      res.status(200).json({ success: true, message: 'Message sent successfully!' });
+    })
+    .catch(error => {
+      console.error('Twilio Error:', error);
+      res.status(500).json({ success: false, message: 'Failed to send message.' });
+    });
+});
+
 // For local development, we still need to listen on a port.
-// Vercel will handle the routing and listening in production.
 if (!IS_VERCEL) {
   const PORT = process.env.PORT || 3001;
   app.listen(PORT, () => {

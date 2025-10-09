@@ -1,7 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './ContactUs.css';
 
 const ContactUs = () => {
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [status, setStatus] = useState(''); // '' | 'submitting' | 'success' | 'error'
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setStatus('submitting');
+
+    fetch('/api/send-message', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.success) {
+        setStatus('success');
+        setFormData({ name: '', email: '', message: '' }); // Clear form
+      } else {
+        setStatus('error');
+      }
+    })
+    .catch(() => {
+      setStatus('error');
+    });
+  };
+
   return (
     <section id="contact" className="contact-us-section">
       <div className="contact-us-container">
@@ -19,11 +50,36 @@ const ContactUs = () => {
         </div>
         <div className="contact-form-container">
           <h2 className="section-title">Contact Us</h2>
-          <form>
-            <input type="text" name="name" placeholder="Name" required />
-            <input type="email" name="email" placeholder="Email" required />
-            <textarea name="message" rows="5" placeholder="Message" required></textarea>
-            <button type="submit" className="submit-button">Submit</button>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              name="name"
+              placeholder="Name"
+              value={formData.name}
+              onChange={handleInputChange}
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={handleInputChange}
+              required
+            />
+            <textarea
+              name="message"
+              rows="5"
+              placeholder="Message"
+              value={formData.message}
+              onChange={handleInputChange}
+              required
+            ></textarea>
+            <button type="submit" className="submit-button" disabled={status === 'submitting'}>
+              {status === 'submitting' ? 'Sending...' : 'Submit'}
+            </button>
+            {status === 'success' && <p className="status-message success">Thank you for your message!</p>}
+            {status === 'error' && <p className="status-message error">Something went wrong. Please try again.</p>}
           </form>
         </div>
       </div>

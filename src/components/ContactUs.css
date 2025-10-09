@@ -70,6 +70,24 @@
   border-color: var(--text-dark-gray);
 }
 
+.submit-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.status-message {
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+.status-message.success {
+  color: #2f855a; /* Green */
+}
+
+.status-message.error {
+  color: #c53030; /* Red */
+}
+
 @media (max-width: 900px) {
   .contact-us-container {
     flex-direction: column;
