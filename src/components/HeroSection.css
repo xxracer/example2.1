@@ -33,9 +33,9 @@
   left: 0;
   width: 100%;
   height: 100%;
-  /* The background color is now controlled by an inline style in HeroSection.js */
-  /* This transition will smooth the opacity change on scroll */
-  transition: background-color 0.1s linear;
+  /* The background color and opacity are dynamically set via an inline style. */
+  /* This transition ensures the change is smooth on scroll. */
+  transition: background-color 0.2s linear;
 }
 
 .hero-content {

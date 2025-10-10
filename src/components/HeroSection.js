@@ -6,20 +6,17 @@ const HeroSection = () => {
   const heroRef = useRef(null);
 
   useEffect(() => {
-    const welcomeSection = document.getElementById('welcome-section');
-
     const handleScroll = () => {
-      if (welcomeSection) {
+      if (heroRef.current) {
         const scrollY = window.scrollY;
-        // The point where the welcome section's top aligns with the navbar
-        const transitionEnd = welcomeSection.offsetTop - 80; // 80 is approx navbar height
+        // The effect should complete over the visible height of the hero section.
+        const transitionDistance = heroRef.current.offsetHeight - window.innerHeight;
 
         const startOpacity = 0.1; // Start with a very light tint
-        const endOpacity = 0.85;  // End with a darker, but not fully opaque, tint
+        const endOpacity = 0.85;   // End with a darker, but not fully opaque, tint
 
-        // Calculate scroll progress (from 0 to 1)
-        // This ensures the animation completes exactly when the welcome section is reached
-        const scrollProgress = Math.min(scrollY / transitionEnd, 1);
+        // Calculate scroll progress (0 to 1)
+        const scrollProgress = Math.min(scrollY / (transitionDistance > 0 ? transitionDistance : 1), 1);
 
         // Interpolate opacity based on scroll progress
         const newOpacity = startOpacity + scrollProgress * (endOpacity - startOpacity);
@@ -29,7 +26,7 @@ const HeroSection = () => {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Set initial state on load
+    handleScroll(); // Set initial state
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
