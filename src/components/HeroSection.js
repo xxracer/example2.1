@@ -9,13 +9,15 @@ const HeroSection = () => {
     const handleScroll = () => {
       if (heroRef.current) {
         const scrollY = window.scrollY;
-        // The effect should complete over the full height of the hero section.
-        const heroHeight = heroRef.current.offsetHeight;
-        const startOpacity = 0.1; // Start with a very light tint
-        const endOpacity = 0.85; // End with a darker tint
+        // The effect should complete over most of the hero section's height.
+        // Using 80% of the height provides a good transition distance.
+        const transitionDistance = heroRef.current.offsetHeight * 0.8;
 
-        // Calculate scroll progress (0 to 1) within the hero section
-        const scrollProgress = Math.min(scrollY / (heroHeight - window.innerHeight * 0.5), 1);
+        const startOpacity = 0.1; // Start with a very light tint
+        const endOpacity = 0.85;   // End with a darker, but not fully opaque, tint
+
+        // Calculate scroll progress (0 to 1)
+        const scrollProgress = Math.min(scrollY / transitionDistance, 1);
 
         // Interpolate opacity based on scroll progress
         const newOpacity = startOpacity + scrollProgress * (endOpacity - startOpacity);

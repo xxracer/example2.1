@@ -28,14 +28,14 @@ const HomePage = () => {
       <HeroSection />
       <WelcomeSection />
       <Programs />
-      <div style={{ maxWidth: '900px', margin: '0 auto 60px auto' }}>
-        <FAQ faqData={programsFaqs} title="About Our Programs" />
-      </div>
       <Facility />
       <Testimonials />
       <CallToAction />
       <ContactUs />
       <InstagramFeed />
+      <div style={{ maxWidth: '900px', margin: '0 auto 60px auto' }}>
+        <FAQ faqData={programsFaqs} title="About Our Programs" />
+      </div>
     </div>
   );
 };

@@ -2,7 +2,7 @@
 
 .contact-us-section {
   padding: 80px 20px;
-  background-color: #F9F9F9;
+  background-color: #4a4a4a; /* Dark metallic gray */
 }
 
 .contact-us-container {
@@ -17,7 +17,9 @@
 
 .contact-map-container {
   width: 400px;
-  height: 450px; /* Increased height to match form */
+  height: 450px;
+  border: 4px solid #fff; /* Add a border to the map */
+  border-radius: 8px;
 }
 
 .contact-form-container {
@@ -27,6 +29,7 @@
 
 .contact-form-container .section-title {
   margin-bottom: 30px;
+  color: #FFFFFF; /* White title for contrast */
 }
 
 .contact-form-container form {
@@ -39,23 +42,30 @@
 .contact-form-container textarea {
   width: 100%;
   padding: 14px;
-  border: 1px solid var(--border-light-gray);
+  border: 1px solid #666;
   border-radius: 5px;
   font-family: var(--font-body);
   font-size: 16px;
-  background-color: var(--input-background); /* #F5F5F5 */
+  background-color: #5d5d5d;
+  color: #FFFFFF;
 }
+
+.contact-form-container input::placeholder,
+.contact-form-container textarea::placeholder {
+  color: #ccc;
+}
+
 
 .contact-form-container input:focus,
 .contact-form-container textarea:focus {
-  outline: 1px solid var(--text-charcoal);
-  border-color: var(--text-charcoal);
+  outline: 1px solid #fff;
+  border-color: #fff;
 }
 
 .submit-button {
-  background-color: var(--text-charcoal);
-  color: var(--background-primary);
-  border: 2px solid var(--text-charcoal);
+  background-color: #FFFFFF;
+  color: #4a4a4a;
+  border: 2px solid #FFFFFF;
   border-radius: 5px;
   padding: 14px;
   font-family: var(--font-heading-secondary);
@@ -66,8 +76,8 @@
 }
 
 .submit-button:hover {
-  background-color: var(--text-dark-gray);
-  border-color: var(--text-dark-gray);
+  background-color: #f0f0f0;
+  border-color: #f0f0f0;
 }
 
 .submit-button:disabled {
@@ -81,11 +91,11 @@
 }
 
 .status-message.success {
-  color: #2f855a; /* Green */
+  color: #68d391; /* Light Green */
 }
 
 .status-message.error {
-  color: #c53030; /* Red */
+  color: #fc8181; /* Light Red */
 }
 
 @media (max-width: 900px) {
