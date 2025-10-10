@@ -1,0 +1,13 @@
+/* src/pages/HomePage.css */
+
+.homepage-container {
+  background-color: #545454; /* The final solid background color */
+  position: relative;
+}
+
+/* The WelcomeSection and subsequent sections will scroll over the sticky HeroSection */
+.welcome-section-wrapper {
+  position: relative;
+  z-index: 2; /* Ensure it scrolls over the hero */
+  background-color: #545454; /* Match the final background color */
+}

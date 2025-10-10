@@ -1,5 +1,5 @@
-import React from 'react';
-import FAQ from '../components/FAQ'; // Import the FAQ component
+import React, { useState, useEffect, useRef } from 'react';
+import FAQ from '../components/FAQ';
 
 // Import components
 import HeroSection from '../components/HeroSection';
@@ -10,8 +10,41 @@ import Testimonials from '../components/Testimonials';
 import CallToAction from '../components/CallToAction';
 import ContactUs from '../components/ContactUs';
 import InstagramFeed from '../components/InstagramFeed';
+import './HomePage.css'; // Import new CSS for homepage structure
 
 const HomePage = () => {
+  const [videoOpacity, setVideoOpacity] = useState(1);
+  const welcomeRef = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (welcomeRef.current) {
+        const { top } = welcomeRef.current.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+
+        // Start fading when the welcome section is visible on screen
+        const fadeStartPoint = windowHeight;
+        // End fading when it's at the top of the screen
+        const fadeEndPoint = 0;
+
+        if (top < fadeStartPoint) {
+          const progress = (fadeStartPoint - top) / (fadeStartPoint - fadeEndPoint);
+          const newOpacity = 1 - Math.min(progress, 1);
+          setVideoOpacity(newOpacity);
+        } else {
+          setVideoOpacity(1);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial check
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   const programsFaqs = [
     {
       question: "Is Jiu Jitsu safe for children, and what are the benefits for kids?",
@@ -40,17 +73,19 @@ const HomePage = () => {
   ];
 
   return (
-    <div>
-      <HeroSection />
-      <WelcomeSection />
-      <Programs />
-      <Facility />
-      <Testimonials />
-      <CallToAction />
-      <ContactUs />
-      <InstagramFeed />
-      <div style={{ maxWidth: '900px', margin: '0 auto 60px auto' }}>
-        <FAQ faqData={programsFaqs} title="About Our Programs" />
+    <div className="homepage-container">
+      <HeroSection videoOpacity={videoOpacity} />
+      <div className="welcome-section-wrapper" ref={welcomeRef}>
+        <WelcomeSection />
+        <Programs />
+        <Facility />
+        <Testimonials />
+        <CallToAction />
+        <ContactUs />
+        <InstagramFeed />
+        <div style={{ maxWidth: '900px', margin: '0 auto 60px auto' }}>
+          <FAQ faqData={programsFaqs} title="About Our Programs" />
+        </div>
       </div>
     </div>
   );

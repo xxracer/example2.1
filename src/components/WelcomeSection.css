@@ -2,7 +2,7 @@
 
 .welcome-section {
   padding: 80px 20px;
-  background-color: var(--background-primary);
+  background-color: transparent; /* Make it transparent */
 }
 
 .welcome-container {
@@ -18,10 +18,10 @@
 .welcome-seo-text {
   font-family: var(--font-body);
   font-size: 18px;
-  color: var(--text-dark-gray);
+  color: #FFFFFF; /* White text for contrast */
   line-height: 1.7;
   max-width: 800px;
-  margin: 0 auto 20px auto; /* Adjusted margin */
+  margin: 0 auto 20px auto;
 }
 
 .welcome-list {
@@ -36,13 +36,13 @@
 .welcome-list li {
   margin-bottom: 15px;
   font-size: 16px;
-  color: var(--text-charcoal);
+  color: #FFFFFF; /* White text */
 }
 
 .welcome-info-button {
-  background-color: var(--text-charcoal);
-  color: var(--background-primary);
-  border: 2px solid var(--text-charcoal);
+  background-color: #FFFFFF;
+  color: var(--text-charcoal);
+  border: 2px solid #FFFFFF;
   border-radius: 30px;
   padding: 12px 30px;
   font-family: var(--font-heading-secondary);
@@ -55,8 +55,8 @@
 }
 
 .welcome-info-button:hover {
-  background-color: var(--text-dark-gray);
-  border-color: var(--text-dark-gray);
+  background-color: #f0f0f0;
+  border-color: #f0f0f0;
 }
 
 .welcome-image-wrapper img {
