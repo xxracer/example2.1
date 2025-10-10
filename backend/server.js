@@ -3,6 +3,11 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
+const { JSDOM } = require('jsdom');
+const DOMPurify = require('dompurify');
+
+const window = new JSDOM('').window;
+const purify = DOMPurify(window);
 
 const app = express();
 
@@ -46,7 +51,8 @@ app.get('/api/instructors', (req, res) => {
 
 app.post('/api/instructors', (req, res) => {
   const instructors = readDB();
-  const newInstructor = { id: Date.now().toString(), ...req.body };
+  const sanitizedBio = purify.sanitize(req.body.bio);
+  const newInstructor = { id: Date.now().toString(), ...req.body, bio: sanitizedBio };
   instructors.push(newInstructor);
   writeDB(instructors);
   res.status(201).json(newInstructor);
@@ -61,7 +67,8 @@ app.put('/api/instructors/:id', (req, res) => {
     return res.status(404).send('Instructor not found');
   }
 
-  const updatedInstructor = { ...instructors[instructorIndex], ...req.body };
+  const sanitizedBio = purify.sanitize(req.body.bio);
+  const updatedInstructor = { ...instructors[instructorIndex], ...req.body, bio: sanitizedBio };
   instructors[instructorIndex] = updatedInstructor;
   writeDB(instructors);
   res.json(updatedInstructor);
