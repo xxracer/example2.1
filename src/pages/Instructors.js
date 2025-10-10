@@ -55,7 +55,7 @@ const Instructors = () => {
           </div>
           <div className="instructor-bio">
             <h2>{instructor.name}</h2>
-            <p>{instructor.bio}</p>
+            <div dangerouslySetInnerHTML={{ __html: instructor.bio }} />
           </div>
         </div>
       ))}
