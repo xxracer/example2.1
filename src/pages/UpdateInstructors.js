@@ -1,14 +1,57 @@
 import React, { useState, useEffect } from 'react';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+import { useEditor, EditorContent } from '@tiptap/react';
+import StarterKit from '@tiptap/starter-kit';
 import './UpdateInstructors.css';
 
 const API_URL = '/api/instructors';
+
+const MenuBar = ({ editor }) => {
+  if (!editor) {
+    return null;
+  }
+
+  return (
+    <div className="menu-bar">
+      <button
+        onClick={() => editor.chain().focus().toggleBold().run()}
+        className={editor.isActive('bold') ? 'is-active' : ''}
+      >
+        Bold
+      </button>
+      <button
+        onClick={() => editor.chain().focus().toggleItalic().run()}
+        className={editor.isActive('italic') ? 'is-active' : ''}
+      >
+        Italic
+      </button>
+      <button
+        onClick={() => editor.chain().focus().toggleBulletList().run()}
+        className={editor.isActive('bulletList') ? 'is-active' : ''}
+      >
+        Bullet List
+      </button>
+    </div>
+  );
+};
 
 const UpdateInstructors = () => {
   const [instructors, setInstructors] = useState([]);
   const [formData, setFormData] = useState({ name: '', bio: '', image: '' });
   const [editingId, setEditingId] = useState(null);
+
+  const editor = useEditor({
+    extensions: [StarterKit],
+    content: formData.bio,
+    onUpdate: ({ editor }) => {
+      setFormData({ ...formData, bio: editor.getHTML() });
+    },
+  });
+
+  useEffect(() => {
+    if (editor) {
+      editor.commands.setContent(formData.bio);
+    }
+  }, [formData.bio, editor]);
 
   // Fetch instructors on component mount
   useEffect(() => {
@@ -21,10 +64,6 @@ const UpdateInstructors = () => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-  };
-
-  const handleBioChange = (value) => {
-    setFormData({ ...formData, bio: value });
   };
 
   const handleSubmit = (e) => {
@@ -81,11 +120,10 @@ const UpdateInstructors = () => {
             onChange={handleInputChange}
             required
           />
-          <ReactQuill
-            value={formData.bio}
-            onChange={handleBioChange}
-            placeholder="Biography"
-          />
+          <div className="tiptap-editor">
+            <MenuBar editor={editor} />
+            <EditorContent editor={editor} />
+          </div>
           <input
             type="text"
             name="image"
